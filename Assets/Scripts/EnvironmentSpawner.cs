@@ -5,7 +5,6 @@ public class EnvironmentSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
     [SerializeField] private Transform spawnPoint; // Position where new objects will be spawned
-    [SerializeField] private float spawnTriggerZPosition = -10f; // Position where a new spawn is triggered
     [SerializeField] private float groupSpacing = 10f; // Distance between building groups
     [SerializeField] private int minBuildingsPerGroup = 3; // Minimum number of buildings in a group
     [SerializeField] private int maxBuildingsPerGroup = 6; // Maximum number of buildings in a group
@@ -25,17 +24,6 @@ public class EnvironmentSpawner : MonoBehaviour
         
     }
 
-    /// <summary>
-    /// Spawns the initial group and sets it as the tracking object.
-    /// </summary>
-    //private void SpawnInitialGroup()
-    //{
-    //    SpawnBuildingGroup();
-    //}
-
-    /// <summary>
-    /// Tracks the position of the current tracking object to decide when to spawn the next group.
-    /// </summary>
    
     IEnumerator spawndelay()
     {
@@ -43,7 +31,8 @@ public class EnvironmentSpawner : MonoBehaviour
         {
            
             DecideNextSpawn();
-            yield return new WaitForSeconds(10);
+            int random = Random.Range(0, 5);
+            yield return new WaitForSeconds(random);
         }
     }
 
@@ -60,55 +49,36 @@ public class EnvironmentSpawner : MonoBehaviour
         }
         else
         {
-            SpawnFlyover();
+            //SpawnFlyover();
         }
     }
     private void Spawnbuildings() 
     {
-        int random = Random.Range(0, 3);
+        
+       
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
+        Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
         if (buildingPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(0, spawnPoint.position.y, spawnPoint.position.z + groupSpacing);
-            GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition,transform.rotation);
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(20,60));
+            GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
+            newBuilding.GetComponent<PrefabScript>().moveSpeed = 10;
 
-            
+
         }
+        
+        
     }
-    /// <summary>
-    /// Spawns a group of buildings and sets the last building as the new tracking object.
-    /// </summary>
-    //private void SpawnBuildingGroup()
-    //{
-    //    int buildingCount = Random.Range(minBuildingsPerGroup, maxBuildingsPerGroup + 1);
-    //    Vector3 spawnPosition = spawnPoint.position;
-
-    //    for (int i = 0; i < buildingCount; i++)
-    //    {
-    //        GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
-    //        if (buildingPrefab != null)
-    //        {
-    //            Vector3 positionOffset = new Vector3(Random.Range(-5f, 5f), 0, i * groupSpacing);
-    //            GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition + positionOffset, Quaternion.identity);
-
-    //            if (i == buildingCount - 1) // Last building in the group
-    //            {
-    //                currentTrackingObject = newBuilding.transform;
-    //            }
-    //        }
-    //    }
-    //}
-
-    /// <summary>
-    /// Spawns a flyover and sets it as the new tracking object.
-    /// </summary>
+    
     private void SpawnFlyover()
     {
         GameObject flyoverPrefab = prefabController.GetRandomFlyoverPrefab();
+
+        Quaternion newQuaternion = Quaternion.Euler(-60, -90, -90);
         if (flyoverPrefab != null)
         {
             Vector3 spawnPosition = new Vector3(0, spawnPoint.position.y,spawnPoint.position.z + groupSpacing);
-            GameObject newFlyover = Instantiate(flyoverPrefab, spawnPosition, Quaternion.identity);
+            GameObject newFlyover = Instantiate(flyoverPrefab, spawnPosition, newQuaternion);
 
             currentTrackingObject = newFlyover.transform;
         }

@@ -4,7 +4,7 @@ public class PrefabScript: MonoBehaviour
 {
 
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f; // Speed at which the road moves
+    public  float moveSpeed = 5f; // Speed at which the road moves
     [SerializeField] Transform endpoint;
     
 
