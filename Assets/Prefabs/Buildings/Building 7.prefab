@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8762787473790140804}
   - component: {fileID: 8636432390093342147}
   - component: {fileID: 5571307324862764625}
+  - component: {fileID: 5320879907389330943}
   m_Layer: 0
   m_Name: Building 7
   m_TagString: Untagged
@@ -87,3 +88,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5320879907389330943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689516521202313826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f574ab855fce748810545d3652e3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  endpoint: {fileID: 7090935421090611125, guid: 5273d3bd7169e694e96e6be29f07a57f, type: 3}

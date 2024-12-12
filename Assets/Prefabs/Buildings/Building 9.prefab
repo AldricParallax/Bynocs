@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8836845355569556394}
   - component: {fileID: 8001247915898699207}
   - component: {fileID: 5287506228320097270}
+  - component: {fileID: 16951526025811768}
   m_Layer: 0
   m_Name: Building 9
   m_TagString: Untagged
@@ -87,3 +88,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &16951526025811768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398856239716253152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f574ab855fce748810545d3652e3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  endpoint: {fileID: 7090935421090611125, guid: 5273d3bd7169e694e96e6be29f07a57f, type: 3}
