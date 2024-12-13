@@ -12,11 +12,14 @@ public class RoadSpawner : MonoBehaviour
     [Header("Spawn Tracking")]
     [SerializeField] private Transform trackingObject; // Object to track for position-based spawn trigger
     [SerializeField] Transform trackpoint; // Z position at which to spawn a new road
-
+    [SerializeField] GameObject Road;
+    [SerializeField] GameObject Road1;
     private GameObject currentTrackingRoad; // Current road being tracked
-
+    public float Roadspeed; // Speed at which the road moves
     private void Start()
     {
+        Road.GetComponent<Roadscript>().moveSpeed = 40;
+        Road1.GetComponent<Roadscript>().moveSpeed = 40;
         // Spawn the initial road and set it as the tracking object
         //SpawnInitialRoad();
     }
@@ -32,6 +35,7 @@ public class RoadSpawner : MonoBehaviour
 
     private void Update()
     {
+        
         TrackRoadPosition();
     }
 
@@ -57,6 +61,7 @@ public class RoadSpawner : MonoBehaviour
             Vector3 newSpawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, trackingObject.position.z);
             currentTrackingRoad = Instantiate(roadPrefab, newSpawnPosition, spawnPoint.rotation);
             trackingObject = currentTrackingRoad.transform;
+            currentTrackingRoad.GetComponent<Roadscript>().moveSpeed = Roadspeed;
         }
         else
         {

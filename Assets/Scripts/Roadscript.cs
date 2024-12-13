@@ -4,7 +4,7 @@ using UnityEngine;
 public class Roadscript : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f; // Speed at which the road moves
+    public float moveSpeed; // Speed at which the road moves
     [SerializeField] Transform endpoint;
     
     private void Start()

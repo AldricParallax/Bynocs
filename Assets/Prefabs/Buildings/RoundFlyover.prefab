@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb14ef150bccfb344acb1bcfad3b2d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 10
   endpoint: {fileID: 7090935421090611125, guid: 5273d3bd7169e694e96e6be29f07a57f, type: 3}
 --- !u!1001 &8393257115334109837
 PrefabInstance:
@@ -57,15 +57,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 75918926848596087, guid: 4913193a58769bf4395e93ce91a3ddf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.246536
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 75918926848596087, guid: 4913193a58769bf4395e93ce91a3ddf6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31.74588
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 75918926848596087, guid: 4913193a58769bf4395e93ce91a3ddf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.53199
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 75918926848596087, guid: 4913193a58769bf4395e93ce91a3ddf6, type: 3}
       propertyPath: m_LocalRotation.w

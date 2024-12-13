@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class EnvironmentSpawner : MonoBehaviour
 {
+    
     [Header("Spawn Settings")]
+    public int SpeedValue;
+    [SerializeField] RoadSpawner RoadSpawner;
     [SerializeField] private Transform spawnPoint; // Position where new objects will be spawned
-    [SerializeField] private float groupSpacing = 10f; // Distance between building groups
-    [SerializeField] private int minBuildingsPerGroup = 3; // Minimum number of buildings in a group
-    [SerializeField] private int maxBuildingsPerGroup = 6; // Maximum number of buildings in a group
     [SerializeField] private int minRightOffset = 20; // Minimum offset to the right of the spawn point
     [SerializeField] private int maxRightOffset = 60; // Maximum offset to the right of the spawn point
     [SerializeField] private int minLeftOffset = -40; // Minimum offset forward from the spawn point
@@ -15,10 +15,11 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private PrefabController prefabController; // Reference to the PrefabController
 
-    private Transform currentTrackingObject; // Tracks the current prefab to know when to spawn the next one
+    
 
     private void Start()
     {
+        RoadSpawner.Roadspeed = SpeedValue;
         StartCoroutine(spawndelay());
     }
 
@@ -32,9 +33,28 @@ public class EnvironmentSpawner : MonoBehaviour
     {
         while (true)
         {
-           
-            DecideNextSpawn();
-            int random = Random.Range(0, 5);
+
+            float randomValue = Random.value;
+            if (randomValue < 0.9f)
+            {
+                //equal chance to spawn buildings on left or right
+                float randomValue2 = Random.value;
+                if (randomValue2 < 0.5f)
+                {
+                    Spawnbuildingsright();
+                }
+                else
+                {
+                    SpawnbuildingsLeft();
+                }
+            }
+            else
+            {
+                yield return new WaitForSeconds(2);
+                SpawnFlyover();
+                yield return new WaitForSeconds(2);
+            }
+            int random = Random.Range(0, 4);
             yield return new WaitForSeconds(random);
         }
     }
@@ -45,24 +65,7 @@ public class EnvironmentSpawner : MonoBehaviour
     private void DecideNextSpawn()
     {
         // 70% chance to spawn buildings, 30% chance to spawn a flyover
-        float randomValue = Random.value;
-        if (randomValue < 0.7f)
-        {
-            //equal chance to spawn buildings on left or right
-            float randomValue2 = Random.value;
-            if (randomValue2 < 0.5f)
-            {
-                Spawnbuildingsright();
-            }
-            else
-            {
-                SpawnbuildingsLeft();
-            }
-        }
-        else
-        {
-            //SpawnFlyover();
-        }
+        
     }
     private void Spawnbuildingsright() 
     {
@@ -74,7 +77,7 @@ public class EnvironmentSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(minRightOffset,maxRightOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
-            newBuilding.GetComponent<PrefabScript>().moveSpeed = 10;
+            newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
 
 
         }
@@ -91,7 +94,7 @@ public class EnvironmentSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(minLeftOffset,maxLeftOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
-            newBuilding.GetComponent<PrefabScript>().moveSpeed = 10;
+            newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
 
 
         }
@@ -103,13 +106,13 @@ public class EnvironmentSpawner : MonoBehaviour
     {
         GameObject flyoverPrefab = prefabController.GetRandomFlyoverPrefab();
 
-        Quaternion newQuaternion = Quaternion.Euler(-60, -90, -90);
+        
         if (flyoverPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(0, spawnPoint.position.y,spawnPoint.position.z + groupSpacing);
-            GameObject newFlyover = Instantiate(flyoverPrefab, spawnPosition, newQuaternion);
+            Vector3 spawnPosition = spawnPoint.position;
+            GameObject newFlyover = Instantiate(flyoverPrefab, spawnPosition, Quaternion.identity);
 
-            currentTrackingObject = newFlyover.transform;
+            newFlyover.GetComponent<BridgeMovement>().moveSpeed = SpeedValue;
         }
     }
 }
