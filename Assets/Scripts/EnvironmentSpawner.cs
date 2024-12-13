@@ -5,7 +5,7 @@ public class EnvironmentSpawner : MonoBehaviour
 {
     
     [Header("Spawn Settings")]
-    public int SpeedValue;
+    public float  SpeedValue;
     [SerializeField] RoadSpawner RoadSpawner;
     [SerializeField] private Transform spawnPoint; // Position where new objects will be spawned
     [SerializeField] private int minRightOffset = 20; // Minimum offset to the right of the spawn point
@@ -19,13 +19,13 @@ public class EnvironmentSpawner : MonoBehaviour
 
     private void Start()
     {
-        RoadSpawner.Roadspeed = SpeedValue;
+       
         StartCoroutine(spawndelay());
     }
 
     private void Update()
     {
-        
+        SpeedValue = RoadSpawner.Roadspeed;
     }
 
    

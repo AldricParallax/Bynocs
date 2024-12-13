@@ -15,11 +15,12 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] GameObject Road;
     [SerializeField] GameObject Road1;
     private GameObject currentTrackingRoad; // Current road being tracked
-    public float Roadspeed; // Speed at which the road moves
+    public float Roadspeed=40; // Speed at which the road moves
     private void Start()
     {
-        Road.GetComponent<Roadscript>().moveSpeed = 40;
-        Road1.GetComponent<Roadscript>().moveSpeed = 40;
+        
+        Road.GetComponent<Roadscript>().moveSpeed =Roadspeed;
+        Road1.GetComponent<Roadscript>().moveSpeed = Roadspeed;
         // Spawn the initial road and set it as the tracking object
         //SpawnInitialRoad();
     }
