@@ -35,8 +35,10 @@ public class EnvironmentSpawner : MonoBehaviour
         {
 
             float randomValue = Random.value;
-            if (randomValue < 0.9f)
+            Debug.Log(randomValue);
+            if (randomValue <= 0.98f)
             {
+
                 //equal chance to spawn buildings on left or right
                 float randomValue2 = Random.value;
                 if (randomValue2 < 0.5f)
@@ -54,7 +56,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 SpawnFlyover();
                 yield return new WaitForSeconds(2);
             }
-            int random = Random.Range(0, 4);
+            int random = Random.Range(0, 3);
             yield return new WaitForSeconds(random);
         }
     }
@@ -89,17 +91,20 @@ public class EnvironmentSpawner : MonoBehaviour
         
        
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
-        Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
+        Quaternion newQuaternion = Quaternion.Euler(-90, 0, -90);
+   
         if (buildingPrefab != null)
         {
             Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(minLeftOffset,maxLeftOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
             newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
+            newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
+
 
 
         }
-        
-        
+
+
     }
     
     private void SpawnFlyover()

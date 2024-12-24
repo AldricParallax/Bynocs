@@ -1,28 +1,49 @@
 using UnityEngine;
     
-public class PrefabScript: MonoBehaviour
+public class PrefabScript : MonoBehaviour
 {
-
     [Header("Movement Settings")]
-    public  float moveSpeed; // Speed at which the road moves
+    public float moveSpeed; // Speed at which the road moves
     [SerializeField] Transform endpoint;
-    
+
+    public bool isMovingUp = false;
 
     private void Start()
     {
-
+        // Start moving down by default
+        MoveDown();
     }
 
     private void FixedUpdate()
     {
-        // Move the road constantly in the forward direction
-        transform.Translate(Vector3.down * moveSpeed * Time.fixedDeltaTime);
+        if (isMovingUp)
+        {
+            MoveUp();
+        }
+        else
+        {
+            MoveDown();
+        }
 
-        //check position of road and destroy
+        // Check position of road and destroy
         if (transform.position.x > endpoint.position.x)
         {
             Destroy(gameObject);
         }
     }
 
+    private void MoveUp()
+    {
+        transform.Translate(Vector3.up * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void MoveDown()
+    {
+        transform.Translate(Vector3.down * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public void SwitchMovement()
+    {
+        isMovingUp = !isMovingUp;
+    }
 }
