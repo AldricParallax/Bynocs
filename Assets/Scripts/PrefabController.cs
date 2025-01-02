@@ -5,7 +5,9 @@ using UnityEngine;
 public class PrefabController : MonoBehaviour
 {
     [Header("Prefab Lists")]
-    [SerializeField] private List<GameObject> buildingPrefabs; // List of building prefabs
+    public List<GameObject> buildingPrefabs;
+    private Queue<int> recentlyUsedIndices = new Queue<int>(); // Tracks recently used indices
+    private int maxRecentCount = 2; // Maximum number of recently used indices to track
     [SerializeField] private List<GameObject> flyoverPrefabs; // List of flyover prefabs
 
     /// <summary>
@@ -15,7 +17,22 @@ public class PrefabController : MonoBehaviour
     {
         if (buildingPrefabs.Count > 0)
         {
-            return buildingPrefabs[Random.Range(0, buildingPrefabs.Count)];
+            int randomIndex;
+
+            // Ensure the random index is not recently used
+            do
+            {
+                randomIndex = Random.Range(0, buildingPrefabs.Count);
+            } while (recentlyUsedIndices.Contains(randomIndex) && recentlyUsedIndices.Count < buildingPrefabs.Count);
+
+            // Update the queue of recently used indices
+            recentlyUsedIndices.Enqueue(randomIndex);
+            if (recentlyUsedIndices.Count > maxRecentCount)
+            {
+                recentlyUsedIndices.Dequeue();
+            }
+
+            return buildingPrefabs[randomIndex];
         }
         else
         {

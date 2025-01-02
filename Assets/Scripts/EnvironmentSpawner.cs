@@ -22,13 +22,10 @@ public class EnvironmentSpawner : MonoBehaviour
        
         StartCoroutine(spawndelay());
     }
-
     private void Update()
     {
         SpeedValue = RoadSpawner.Roadspeed;
     }
-
-   
     IEnumerator spawndelay()
     {
         while (true)
@@ -36,7 +33,7 @@ public class EnvironmentSpawner : MonoBehaviour
 
             float randomValue = Random.value;
             Debug.Log(randomValue);
-            if (randomValue <= 0.98f)
+            if (randomValue <= 0.95f)
             {
 
                 //equal chance to spawn buildings on left or right
@@ -60,53 +57,30 @@ public class EnvironmentSpawner : MonoBehaviour
             yield return new WaitForSeconds(random);
         }
     }
-
-    /// <summary>
-    /// Decides whether to spawn a building group or a flyover.
-    /// </summary>
-    private void DecideNextSpawn()
-    {
-        // 70% chance to spawn buildings, 30% chance to spawn a flyover
-        
-    }
     private void Spawnbuildingsright() 
     {
-        
-       
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
         Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
         if (buildingPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(minRightOffset,maxRightOffset));
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y-10, spawnPoint.position.z + Random.Range(minRightOffset,maxRightOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
             newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
-
-
         }
-        
-        
     }
     private void SpawnbuildingsLeft() 
     {
-        
-       
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
         Quaternion newQuaternion = Quaternion.Euler(-90, 0, -90);
    
         if (buildingPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z + Random.Range(minLeftOffset,maxLeftOffset));
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y-10, spawnPoint.position.z + Random.Range(minLeftOffset,maxLeftOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
             newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
             newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
-
-
-
         }
-
-
     }
-    
     private void SpawnFlyover()
     {
         GameObject flyoverPrefab = prefabController.GetRandomFlyoverPrefab();
