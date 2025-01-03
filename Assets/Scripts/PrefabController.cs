@@ -7,7 +7,7 @@ public class PrefabController : MonoBehaviour
     [Header("Prefab Lists")]
     public List<GameObject> buildingPrefabs;
     private Queue<int> recentlyUsedIndices = new Queue<int>(); // Tracks recently used indices
-    private int maxRecentCount = 2; // Maximum number of recently used indices to track
+    private int maxRecentCount = 5; // Maximum number of recently used indices to track
     [SerializeField] private List<GameObject> flyoverPrefabs; // List of flyover prefabs
 
     /// <summary>

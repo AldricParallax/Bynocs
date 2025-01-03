@@ -33,9 +33,9 @@ public class EnvironmentSpawner : MonoBehaviour
 
             float randomValue = Random.value;
             Debug.Log(randomValue);
-            if (randomValue <= 0.95f)
+            if (randomValue < 0.97f)
             {
-
+                
                 //equal chance to spawn buildings on left or right
                 float randomValue2 = Random.value;
                 if (randomValue2 < 0.5f)
@@ -49,6 +49,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             else
             {
+                Debug.Log("Bridge random value: "+randomValue);
                 yield return new WaitForSeconds(2);
                 SpawnFlyover();
                 yield return new WaitForSeconds(2);
