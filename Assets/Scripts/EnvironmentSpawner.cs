@@ -54,7 +54,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 SpawnFlyover();
                 yield return new WaitForSeconds(2);
             }
-            int random = Random.Range(0, 3);
+            int random = Random.Range(1, 3);
             yield return new WaitForSeconds(random);
         }
     }
