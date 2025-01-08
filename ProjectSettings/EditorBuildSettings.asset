@@ -5,12 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/BynocsScene.unity
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/PicoTest.unity
+    guid: 35cf2340221a081469fe17708f3b3aa0
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b51fadf3ff39adf448166f503983a526, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9a79af34a22da524c85a9204293eafd1, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1e76b328b56a47f43b2f8c26df840e3a, type: 2}
-  m_UseUCBPForAssetBundles: 0
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: 5649d9636f84cc64796f35f3607a50eb,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 10ad8517487e1074cb66d34ce22ce002,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 211c8bf6048937a449356caba90b6857,
+      type: 2}

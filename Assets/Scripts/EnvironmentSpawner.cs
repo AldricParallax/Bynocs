@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class EnvironmentSpawner : MonoBehaviour
 {
-    
+
     [Header("Spawn Settings")]
-    public float  SpeedValue;
+    public float SpeedValue;
     [SerializeField] RoadSpawner RoadSpawner;
     [SerializeField] private Transform spawnPoint; // Position where new objects will be spawned
     [SerializeField] private int minRightOffset = 20; // Minimum offset to the right of the spawn point
@@ -15,11 +15,11 @@ public class EnvironmentSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private PrefabController prefabController; // Reference to the PrefabController
 
-    
+
 
     private void Start()
     {
-       
+
         StartCoroutine(spawndelay());
     }
     private void Update()
@@ -35,7 +35,7 @@ public class EnvironmentSpawner : MonoBehaviour
             Debug.Log(randomValue);
             if (randomValue < 0.97f)
             {
-                
+
                 //equal chance to spawn buildings on left or right
                 float randomValue2 = Random.value;
                 if (randomValue2 < 0.5f)
@@ -49,7 +49,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("Bridge random value: "+randomValue);
+                Debug.Log("Bridge random value: " + randomValue);
                 yield return new WaitForSeconds(2);
                 SpawnFlyover();
                 yield return new WaitForSeconds(2);
@@ -58,25 +58,25 @@ public class EnvironmentSpawner : MonoBehaviour
             yield return new WaitForSeconds(random);
         }
     }
-    private void Spawnbuildingsright() 
+    private void Spawnbuildingsright()
     {
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
         Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
         if (buildingPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y-10, spawnPoint.position.z + Random.Range(minRightOffset,maxRightOffset));
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 10, spawnPoint.position.z + Random.Range(minRightOffset, maxRightOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
             newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
         }
     }
-    private void SpawnbuildingsLeft() 
+    private void SpawnbuildingsLeft()
     {
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
         Quaternion newQuaternion = Quaternion.Euler(-90, 0, -90);
-   
+
         if (buildingPrefab != null)
         {
-            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y-10, spawnPoint.position.z + Random.Range(minLeftOffset,maxLeftOffset));
+            Vector3 spawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y - 10, spawnPoint.position.z + Random.Range(minLeftOffset, maxLeftOffset));
             GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
             newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
             newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
@@ -86,7 +86,7 @@ public class EnvironmentSpawner : MonoBehaviour
     {
         GameObject flyoverPrefab = prefabController.GetRandomFlyoverPrefab();
 
-        
+
         if (flyoverPrefab != null)
         {
             Vector3 spawnPosition = spawnPoint.position;
