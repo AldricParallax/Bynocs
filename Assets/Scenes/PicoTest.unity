@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23755497, g: 0.274112, b: 0.2739799, a: 1}
+  m_IndirectSpecularColor: {r: 0.060068883, g: 0.06937655, b: 0.06938937, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -658,6 +658,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4018286686147086024, guid: 9ddf7e0e9de75164296964be3c8a9849,
         type: 3}
+    - target: {fileID: 607047570707885187, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: m_Name
+      value: Start Button
+      objectReference: {fileID: 0}
     - target: {fileID: 1570348571911847217, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -684,10 +689,45 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 02a73ab4050160c459fc6585436ca6b6, type: 2}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: ButtonsList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: ButtonsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1382867191}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: TutorialImages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: TutorialImages.Array.data[0]
+      value: 
+      objectReference: {fileID: 2800000, guid: 5cc63792ec5815f4db6ffdf3d712b6f5, type: 3}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: TutorialImages.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: d4f6dbdb436ac5c4393121efad14bd18, type: 3}
+    - target: {fileID: 5129683742990500202, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: TutorialImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: 3ce34bc3ceb22b94f846613c031dd978, type: 3}
     - target: {fileID: 5296258003612348059, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
       propertyPath: m_Name
       value: Bynocs Car 01(New)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579205998490423901, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6008719427453800363, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
@@ -699,6 +739,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6486173695632496734, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486173695632496734, guid: 30d8f6952c5599b4586c6854e3205ef8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 688059603a986e5419a64a0c3e5bd95b,
+        type: 3}
     - target: {fileID: 7883790114264691301, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
       propertyPath: m_IsActive
@@ -883,6 +934,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1912554116}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1382867191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 607047570707885187, guid: 30d8f6952c5599b4586c6854e3205ef8,
+    type: 3}
+  m_PrefabInstance: {fileID: 855773898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1384767375
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +1008,11 @@ MonoBehaviour:
   maxRightOffset: 80
   minLeftOffset: -50
   maxLeftOffset: -100
+  spawnBatchCount: 4
+  positionQueueSize: 3
+  maxValidationAttempts: 10
   prefabController: {fileID: 1705878668}
+  recentZPositions: []
 --- !u!114 &1705878668
 MonoBehaviour:
   m_ObjectHideFlags: 0
