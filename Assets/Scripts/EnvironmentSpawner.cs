@@ -105,7 +105,6 @@ public class EnvironmentSpawner : MonoBehaviour
                 AddToRecentPositions(spawnPosition);
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
-                newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
             }
             else
             {
@@ -140,7 +139,6 @@ public class EnvironmentSpawner : MonoBehaviour
                 AddToRecentPositions(spawnPosition);
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
-                newBuilding.GetComponent<PrefabScript>().moveSpeed = SpeedValue;
                 newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
             }
             else

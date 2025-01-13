@@ -14,6 +14,7 @@ public class Roadscript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        moveSpeed = FindAnyObjectByType<SpeedLimitScript>().speedLimit;
         // Move the road constantly in the forward direction
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         //check position of road and destroy
