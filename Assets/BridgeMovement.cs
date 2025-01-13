@@ -8,6 +8,8 @@ public class BridgeMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        moveSpeed = FindObjectOfType<SpeedLimitScript>().speedLimit;
+
         // Move the road constantly in the forward direction
         transform.Translate(Vector3.right * moveSpeed * Time.fixedDeltaTime);
 

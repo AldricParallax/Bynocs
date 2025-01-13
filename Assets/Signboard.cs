@@ -17,5 +17,9 @@ public class Signboard : MonoBehaviour
     {
         speedLimit=FindObjectOfType<SpeedLimitScript>().speedLimit;
         transform.Translate(Vector3.back * speedLimit * Time.deltaTime);
+        if (transform.position.x > endpoint.position.x)
+        {
+            Destroy(gameObject);
+        }
     }
 }
