@@ -26,6 +26,9 @@ public class EyeToggle : MonoBehaviour
     // Update is called once per frame
     public void UpdateEye(int bLeftEyeEnable)
     {
+        if(mat == null)
+            mat = GetComponent<MeshRenderer>().material;
+
         switch (bLeftEyeEnable)
         {
             case 1:

@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
 {
+    public static GameplayManager instance;
+    public bool TutorialRunning = false;
 
-    public bool TutorialRunning = false; 
+    public float BuildingSpeed = 10f;
 
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
 
 
@@ -14,6 +24,7 @@ public class GameplayManager : MonoBehaviour
     {
         UIHandler.instance.UpdateButton(-1);
         UIHandler.instance.UpdateScreen(0);
+        EyeToggle.instance.UpdateEye(-1);
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Signboard : MonoBehaviour
 {
-    [SerializeField] private int speedLimit;
+    [SerializeField] private float speedLimit;
     public Transform endpoint;
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class Signboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedLimit=FindObjectOfType<SpeedLimitScript>().speedLimit;
+        speedLimit= GameplayManager.instance.BuildingSpeed;
         transform.Translate(Vector3.back * speedLimit * Time.deltaTime);
         if (transform.position.x > endpoint.position.x)
         {

@@ -16,7 +16,7 @@ public class PrefabScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveSpeed=FindAnyObjectByType<SpeedLimitScript>().speedLimit;
+        moveSpeed=GameplayManager.instance.BuildingSpeed;
         if (isMovingUp)
         {
             MoveUp();
