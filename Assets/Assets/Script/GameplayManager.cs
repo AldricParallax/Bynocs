@@ -46,6 +46,7 @@ public class GameplayManager : MonoBehaviour
 
     IEnumerator TutorialLoop()
     {
+        Debug.LogError(TutorialSemaphore);
         switch (TutorialSemaphore)
         {
             case 0:
@@ -118,6 +119,45 @@ public class GameplayManager : MonoBehaviour
         VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(VehicleSpeedHandler.instance.SelectedSpeed));
     }
 
+    public void StartGameCountDown()
+    {
+        StartCoroutine(GameCountdown());
+    }
+
+    IEnumerator GameCountdown()
+    {
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[6]);
+        yield return new WaitForSeconds(1);
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[7]);
+        yield return new WaitForSeconds(1);
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[8]);
+        yield return new WaitForSeconds(1);
+        ActualGameLoop();
+    }
+
+    bool RightEyeBlock = false;
+    int LoopCount = -1;
+    void ActualGameLoop()
+    {
+        if(LoopCount != 10)
+        {
+            LoopCount++;
+            EyeToggle.instance.UpdateEye(RightEyeBlock?1:0);
+            RightEyeBlock = !RightEyeBlock;
+            SpawnBridge();
+        }
+
+        else
+        {
+            EyeToggle.instance.UpdateEye(-1);
+            VehicleSpeedHandler.instance.Canvas.SetActive(false);
+            // Add Total Score
+        }
+
+    }
+
+
+    // Fix later
     public void OnSignBannerEnd(bool Correct)
     {
         if (TutorialSemaphore != -1)
@@ -128,12 +168,21 @@ public class GameplayManager : MonoBehaviour
             }
             if (TutorialSemaphore != -1)
                 BeginTutorial();
+            if(TutorialSemaphore == -1)
+            {
+                EyeToggle.instance.UpdateEye(-1);
+                UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[5]);
+                VehicleSpeedHandler.instance.Canvas.SetActive(false);
+                UIHandler.instance.UpdateButton(2);
 
+            }
         }
+
         else
         {
-            // Infinite End
+            ActualGameLoop();
         }
+
 
     }
 
