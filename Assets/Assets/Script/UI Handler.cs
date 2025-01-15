@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+
 
 public class UIHandler : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class UIHandler : MonoBehaviour
     public List<GameObject> ButtonsList = new List<GameObject>();
     public List<Texture> IntroImages = new List<Texture>();
     public List<Texture> TutorialImages = new List<Texture>();
+    public float FillProgress = 1f;
+    public Image Fill;
 
 
 
@@ -28,10 +32,17 @@ public class UIHandler : MonoBehaviour
     void Start()
     {
         Centralmat = GetComponent<MeshRenderer>().materials[1];
+        //Fill = GameObject.Find("ProgressBar").GetComponent<Image>();
+
 
     }
     public void UpdateCenterScreen(Texture Value)
     {
+
+
+
+
+        if(!Centralmat) Centralmat = GetComponent<MeshRenderer>().materials[1];
         Centralmat.SetTexture("_MainTex", Value);
         Centralmat.SetTexture("_EmissionMap", Value);
 
@@ -64,6 +75,7 @@ public class UIHandler : MonoBehaviour
                 yield return new WaitForSeconds(2);
                 UpdateButton(0);
                 UpdateCenterScreen(IntroImages[2]);
+                //GameplayManager.instance.SpawnBridge();
                 break;
                 
 
@@ -78,6 +90,9 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Fill.gameObject.activeInHierarchy)
+        {
+            Fill.fillAmount = GameplayManager.instance.Signbanner ? 1f - FillProgress : 0f;
+        }
     }
 }

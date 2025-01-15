@@ -31,7 +31,6 @@ public class PrefabController : MonoBehaviour
             {
                 recentlyUsedIndices.Dequeue();
             }
-            Debug.LogError(buildingPrefabs[randomIndex]);
             return buildingPrefabs[randomIndex];
         }
         else

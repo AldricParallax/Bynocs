@@ -16,7 +16,7 @@ public class PrefabScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveSpeed=GameplayManager.instance.BuildingSpeed;
+        moveSpeed=GameplayManager.instance.BuildingSpeed * GameplayManager.instance.Multiplier;
         if (isMovingUp)
         {
             MoveUp();
