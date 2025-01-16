@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 686234890100350613}
   - component: {fileID: -6022980559905329081}
   - component: {fileID: -1185723134637357042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 776655231652083017}
   - component: {fileID: 5168595683347272125}
   - component: {fileID: 1018566058026526878}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Buidling 3 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

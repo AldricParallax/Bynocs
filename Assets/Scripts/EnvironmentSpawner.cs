@@ -58,7 +58,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1);
             }
 
-            float random = Random.Range(1f, 2f);
+            float random = Random.Range(0f, 1f);
             yield return new WaitForSeconds(random);
         }
     }
