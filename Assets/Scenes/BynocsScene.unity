@@ -2154,8 +2154,8 @@ MonoBehaviour:
   maxRightOffset: 300
   minLeftOffset: -60
   maxLeftOffset: -339
-  spawnBatchCount: 17
-  positionQueueSize: 17
+  spawnBatchCount: 8
+  positionQueueSize: 8
   maxValidationAttempts: 10
   prefabController: {fileID: 664402046}
   recentZPositions: []
@@ -2738,7 +2738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 832575519}
   - component: {fileID: 832575520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Global Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7547,7 +7547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TutorialSemaphore: 0
-  Multiplier: 3.6
+  Multiplier: 1
   BuildingSpeed: 40
   SignbannerPrefab: {fileID: 3731179842809821658, guid: b8321aee55de64e42bead98c50c14f52,
     type: 3}
