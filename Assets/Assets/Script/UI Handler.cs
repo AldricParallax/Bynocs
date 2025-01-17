@@ -36,6 +36,11 @@ public class UIHandler : MonoBehaviour
 
 
     }
+
+
+
+
+
     public void UpdateCenterScreen(Texture Value)
     {
 

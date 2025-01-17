@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class GameplayManager : MonoBehaviour
     public SignBoard Signbanner;
     Transform StartLoc;
     List<int> SpeedValues = new List<int> { 25, 40, 45, 60, 75 };
+    bool RightEyeBlock = false;
+    int LoopCount = -1;
+    int Score = 0;
+    public GameObject Result;
+    public TMPro.TMP_Text ResultText;
+    public TMPro.TMP_Text SpeedMeter;
 
 
     private void Awake()
@@ -33,10 +40,14 @@ public class GameplayManager : MonoBehaviour
         StartLoc.position = new Vector3(-767, 0.692149878f, -41.6f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        SpeedMeter.text = BuildingSpeed.ToString();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void BeginTutorial() {
@@ -56,8 +67,8 @@ public class GameplayManager : MonoBehaviour
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
                 VehicleSpeedHandler.instance.Canvas.SetActive(true);
                 SpawnBridge();
-                yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateButton(1);
+               
                 break;
             case 1:
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[2]); // Start The Challenge
@@ -87,7 +98,7 @@ public class GameplayManager : MonoBehaviour
     public int GetRandomNumberFromList()
     {
 
-        int randomIndex = Random.Range(0, SpeedValues.Count);
+        int randomIndex = UnityEngine.Random.Range(0, SpeedValues.Count);
         return SpeedValues[randomIndex];
     }
 
@@ -101,7 +112,7 @@ public class GameplayManager : MonoBehaviour
             newArr.Add(Val);
         }
         if (!newArr.Contains(value))
-            newArr[Random.Range(0, newArr.Count)] = value;
+            newArr[UnityEngine.Random.Range(0, newArr.Count)] = value;
 
         return newArr;
 
@@ -132,17 +143,22 @@ public class GameplayManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[8]);
         yield return new WaitForSeconds(1);
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[9]);
+        yield return new WaitForSeconds(1);
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[10]);
+        UIHandler.instance.UpdateButton(1);
+        UIHandler.instance.ButtonsList[1].transform.GetChild(0).gameObject.SetActive(false);
         ActualGameLoop();
     }
 
-    bool RightEyeBlock = false;
-    int LoopCount = -1;
+
     void ActualGameLoop()
     {
-        if(LoopCount != 10)
+        if (LoopCount != 10)
         {
+            VehicleSpeedHandler.instance.Canvas.SetActive(true);
             LoopCount++;
-            EyeToggle.instance.UpdateEye(RightEyeBlock?1:0);
+            EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
             RightEyeBlock = !RightEyeBlock;
             SpawnBridge();
         }
@@ -152,8 +168,9 @@ public class GameplayManager : MonoBehaviour
             EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             // Add Total Score
+            Result.SetActive(true);
+            ResultText.text = (Score == 10) ? Score.ToString() : "0" + Score.ToString();
         }
-
     }
 
 
@@ -180,10 +197,19 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
-            ActualGameLoop();
+            EyeToggle.instance.UpdateEye(-1);
+            VehicleSpeedHandler.instance.Canvas.SetActive(false);
+            StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 3f));
+            if (Correct)
+            { Score++; }
         }
 
 
     }
 
+    IEnumerator ExecuteWithDelay(Action action, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        action.Invoke();
+    }
 }

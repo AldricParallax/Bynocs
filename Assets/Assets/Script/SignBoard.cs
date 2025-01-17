@@ -8,13 +8,16 @@ public class SignBoard : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed; // Speed at which the road moves
     [SerializeField] Transform endpoint;
+    [SerializeField] Transform RearCarpoint;
+
     Vector3 StartLoc;
     public bool isMovingUp = true;
 
     private void Start()
     {
         endpoint = GameObject.Find("EndPoint").transform;
-        
+        RearCarpoint = GameObject.Find("RearPoint").transform;
+
         // Start moving down by default
         MoveDown();
         StartLoc = transform.position;
@@ -39,7 +42,7 @@ public class SignBoard : MonoBehaviour
         }
 
         // Check position of road and destroy
-        if (transform.position.x > endpoint.position.x)
+        if (transform.position.x > endpoint.position.x || (transform.position.x > RearCarpoint.position.x && VehicleSpeedHandler.instance.IsGivingAnswerAllowed))
         {
             bool isCorrect = (VehicleSpeedHandler.instance.SelectedSpeed == GameplayManager.instance.BuildingSpeed);
             GameplayManager.instance.OnSignBannerEnd(isCorrect);

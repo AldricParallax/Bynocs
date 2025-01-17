@@ -14,6 +14,7 @@ public class AnswerButtonOption : MonoBehaviour
         GetComponent<Button>().image.color = IsCorrect ? Color.green : Color.red;
         transform.GetChild(0).GetComponent<TMP_Text>().color = IsCorrect ? new Color(0f, 0.9803922f, 0.509804f) : new Color(1f, 0.6784314f, 0.6784314f);
         GameplayManager.instance.BuildingSpeed = speedValue;
+        VehicleSpeedHandler.instance.SetButtonEnable(false);
     }
 
     // Start is called before the first frame update
