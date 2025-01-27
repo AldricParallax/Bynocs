@@ -14,7 +14,7 @@ public class GameplayManager : MonoBehaviour
     Transform StartLoc;
     List<int> SpeedValues = new List<int> { 25, 40, 45, 60, 75 };
     bool RightEyeBlock = false;
-    int LoopCount = -1;
+    int LoopCount = 0;
     int Score = 0;
     public GameObject Result;
     public TMPro.TMP_Text ResultText;
@@ -36,8 +36,8 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.UpdateButton(-1);
         UIHandler.instance.UpdateScreen(0);
         EyeToggle.instance.UpdateEye(-1);
-        StartLoc = GameObject.Find("SpawnPoint").transform;
-        StartLoc.position = new Vector3(-767, 0.692149878f, -41.6f);
+        StartLoc = GameObject.Find("SignSpawnPoint").transform;
+        //StartLoc.position = new Vector3(-767, 0.692149878f, -41.6f);
     }
 
     private void Update()
@@ -124,7 +124,7 @@ public class GameplayManager : MonoBehaviour
 
         GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
         Signbanner = obj.GetComponent<SignBoard>();
-        
+        obj.transform.localScale *= 2.5f;
         VehicleSpeedHandler.instance.SelectedSpeed = GetRandomNumberFromList();
         Signbanner.SetSpeed(VehicleSpeedHandler.instance.SelectedSpeed);
         VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(VehicleSpeedHandler.instance.SelectedSpeed));

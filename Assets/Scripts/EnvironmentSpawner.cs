@@ -94,7 +94,7 @@ public class EnvironmentSpawner : MonoBehaviour
             {
                 spawnPosition = new Vector3(
                     spawnPoint.position.x + Random.Range(-10, 50),
-                    spawnPoint.position.y - 10,
+                    spawnPoint.position.y - 20,
                     spawnPoint.position.z + Random.Range(minRightOffset, maxRightOffset)
                 );
                 attempts++;
@@ -105,6 +105,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 AddToRecentPositions(spawnPosition);
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
+                newBuilding.transform.localScale *= 1.5f;
             }
             else
             {
@@ -128,7 +129,7 @@ public class EnvironmentSpawner : MonoBehaviour
             {
                 spawnPosition = new Vector3(
                     spawnPoint.position.x + Random.Range(-10, 50),
-                    spawnPoint.position.y - 10,
+                    spawnPoint.position.y - 20,
                     spawnPoint.position.z + Random.Range(minLeftOffset, maxLeftOffset)
                 );
                 attempts++;
@@ -140,6 +141,8 @@ public class EnvironmentSpawner : MonoBehaviour
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
                 newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
+                newBuilding.transform.localScale *= 1.5f;
+
             }
             else
             {
