@@ -2154,7 +2154,7 @@ MonoBehaviour:
   maxRightOffset: 300
   minLeftOffset: -60
   maxLeftOffset: -339
-  spawnBatchCount: 8
+  spawnBatchCount: 4
   positionQueueSize: 8
   maxValidationAttempts: 10
   prefabController: {fileID: 664402046}
@@ -5687,17 +5687,17 @@ PrefabInstance:
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 301.012
+      value: 301.354
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.71
+      value: 3.395
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.765
+      value: -7.788
       objectReference: {fileID: 0}
     - target: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2,
         type: 3}
@@ -7517,6 +7517,7 @@ MonoBehaviour:
   - {fileID: 1486819122}
   Canvas: {fileID: 1658273020}
   SelectedSpeed: 0
+  IsGivingAnswerAllowed: 0
 --- !u!1 &2138236806
 GameObject:
   m_ObjectHideFlags: 0
@@ -7552,6 +7553,9 @@ MonoBehaviour:
   SignbannerPrefab: {fileID: 3731179842809821658, guid: b8321aee55de64e42bead98c50c14f52,
     type: 3}
   Signbanner: {fileID: 0}
+  Result: {fileID: 0}
+  ResultText: {fileID: 0}
+  SpeedMeter: {fileID: 0}
 --- !u!4 &2138236808
 Transform:
   m_ObjectHideFlags: 0
