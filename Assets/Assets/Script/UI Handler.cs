@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 
 public class UIHandler : MonoBehaviour
@@ -16,7 +17,7 @@ public class UIHandler : MonoBehaviour
     public float FillProgress = 1f;
     public Image Fill;
 
-
+    public event Action OnSignBoardExit;
 
     // Start is called before the first frame update
 
@@ -89,15 +90,52 @@ public class UIHandler : MonoBehaviour
         }
     }
 
+    IEnumerator BlinkButtons()
+    {
+        int blinkCount = 3; // Number of times to blink
+        float blinkDuration = 0.5f; // Duration of each blink
 
+        for (int i = 0; i < blinkCount; i++)
+        {
+            // Set all buttons to red
+            foreach (var button in ButtonsList)
+            {
+                button.GetComponent<Button>().colors = new ColorBlock
+                {
+                    normalColor = Color.red,
+
+                };
+            }
+            yield return new WaitForSeconds(blinkDuration);
+
+            // Reset buttons to their original color
+            foreach (var button in ButtonsList)
+            {
+                button.GetComponent<Button>().colors = new ColorBlock
+                {
+                    normalColor = Color.white,
+
+                };
+            }
+            yield return new WaitForSeconds(blinkDuration);
+        }
+    }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Fill.gameObject.activeInHierarchy)
         {
             Fill.fillAmount = GameplayManager.instance.Signbanner ? 1f - FillProgress : 0f;
+        }
+        // Check if FillProgress is approximately 1 (with a small tolerance)
+        float tolerance = 0.00002f; // Adjust tolerance as needed
+        if (Fill.fillAmount>=0.998)
+        {
+            Debug.Log("invoking event");
+            OnSignBoardExit?.Invoke();
         }
     }
 }

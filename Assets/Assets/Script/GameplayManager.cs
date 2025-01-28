@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -53,15 +55,18 @@ public class GameplayManager : MonoBehaviour
     public void BeginTutorial() {
         
         StartCoroutine(TutorialLoop());
+        
     }
 
     IEnumerator TutorialLoop()
     {
+        //BlinkAnswerButtons();
         Debug.LogError(TutorialSemaphore);
+        VehicleSpeedHandler.instance.IsGivingAnswerAllowed = true;
         switch (TutorialSemaphore)
         {
             case 0:
-                EyeToggle.instance.UpdateEye(-1);
+                //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
@@ -73,17 +78,17 @@ public class GameplayManager : MonoBehaviour
             case 1:
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[2]); // Start The Challenge
                 yield return new WaitForSeconds(2);
-                EyeToggle.instance.UpdateEye(0);
+                //EyeToggle.instance.UpdateEye(0);
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[3]);
                 SpawnBridge();
                 break;
 
             case 2:
-                EyeToggle.instance.UpdateEye(-1);
+                //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
-                EyeToggle.instance.UpdateEye(1);
+                //EyeToggle.instance.UpdateEye(1);
                 yield return new WaitForSeconds(2);
                 SpawnBridge();
                 break;
@@ -124,12 +129,27 @@ public class GameplayManager : MonoBehaviour
 
         GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
         Signbanner = obj.GetComponent<SignBoard>();
-        obj.transform.localScale *= 2.5f;
+        obj.transform.localScale *= 2f;
         VehicleSpeedHandler.instance.SelectedSpeed = GetRandomNumberFromList();
         Signbanner.SetSpeed(VehicleSpeedHandler.instance.SelectedSpeed);
-        VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(VehicleSpeedHandler.instance.SelectedSpeed));
-    }
 
+        VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(VehicleSpeedHandler.instance.SelectedSpeed));
+        UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
+        Debug.Log("Subscribed to SignBoard Event");
+    }
+    private void HandleSignBoardExit()
+    {
+        // Check if the player didn't answer
+        if (!VehicleSpeedHandler.instance.IsGivingAnswerAllowed)
+        {
+            // Trigger the blinking effect
+            BlinkAnswerButtons();
+        }
+
+        // Unsubscribe from the event to avoid memory leaks
+       UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
+        
+    }
     public void StartGameCountDown()
     {
         StartCoroutine(GameCountdown());
@@ -158,14 +178,14 @@ public class GameplayManager : MonoBehaviour
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
             LoopCount++;
-            EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
+            //EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
             RightEyeBlock = !RightEyeBlock;
             SpawnBridge();
         }
 
         else
         {
-            EyeToggle.instance.UpdateEye(-1);
+            //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             // Add Total Score
             Result.SetActive(true);
@@ -211,5 +231,34 @@ public class GameplayManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         action.Invoke();
+    }
+    IEnumerator BlinkButtons()
+    {
+        int blinkCount = 3; // Number of times to blink
+        float blinkDuration = 0.5f; // Duration of each blink
+        
+        for (int i = 0; i < blinkCount; i++)
+        {
+            // Set all buttons to red
+            foreach (var button in VehicleSpeedHandler.instance.Buttons)
+            {
+                button.GetComponent<Button>().image.color = Color.red;
+                Debug.LogError("color changed to red");
+            }
+            yield return new WaitForSeconds(blinkDuration);
+
+            // Reset buttons to their original color
+            foreach (var button in VehicleSpeedHandler.instance.Buttons)
+            {
+                button.GetComponent<Button>().image.color = Color.white;
+                Debug.LogError("color changed to white");
+            }
+            yield return new WaitForSeconds(blinkDuration);
+        }
+    }
+
+    public void BlinkAnswerButtons()
+    {
+        StartCoroutine(BlinkButtons());
     }
 }

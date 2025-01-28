@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
+using Unity.Mathematics;
 
 public class SignBoard : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class SignBoard : MonoBehaviour
     public float moveSpeed; // Speed at which the road moves
     [SerializeField] Transform endpoint;
     [SerializeField] Transform RearCarpoint;
-
+     // Event to notify when the signboard exits
     Vector3 StartLoc;
     public bool isMovingUp = true;
 
@@ -46,6 +48,9 @@ public class SignBoard : MonoBehaviour
         {
             bool isCorrect = (VehicleSpeedHandler.instance.SelectedSpeed == GameplayManager.instance.BuildingSpeed);
             GameplayManager.instance.OnSignBannerEnd(isCorrect);
+            
+           
+            
             Destroy(gameObject);
         }
     }

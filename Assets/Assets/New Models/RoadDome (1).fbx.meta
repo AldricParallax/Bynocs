@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 258424ac7a8124c4aa8c994466a91410
+guid: a97aa5e92f6c7e14cba758115d768d60
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Road Dome
-    second: {fileID: 2100000, guid: 818af1f72391812409c9da51fe94b81f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
