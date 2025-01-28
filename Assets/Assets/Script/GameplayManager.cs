@@ -88,7 +88,7 @@ public class GameplayManager : MonoBehaviour
                 EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
-                //EyeToggle.instance.UpdateEye(1);
+                EyeToggle.instance.UpdateEye(1);
                 yield return new WaitForSeconds(2);
                 SpawnBridge();
                 break;
