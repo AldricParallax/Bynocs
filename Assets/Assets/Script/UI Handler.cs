@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using System;
+using Unity.VisualScripting;
 
 
 public class UIHandler : MonoBehaviour
@@ -16,8 +17,8 @@ public class UIHandler : MonoBehaviour
     public List<Texture> TutorialImages = new List<Texture>();
     public float FillProgress = 1f;
     public Image Fill;
-
     public event Action OnSignBoardExit;
+
 
     // Start is called before the first frame update
 
@@ -120,22 +121,26 @@ public class UIHandler : MonoBehaviour
             yield return new WaitForSeconds(blinkDuration);
         }
     }
-
-
+    int i = 0;
+    public bool hasInvoked = false;
     // Update is called once per frame
-    void Update()
+    void  Update()
     {
         
         if (Fill.gameObject.activeInHierarchy)
         {
             Fill.fillAmount = GameplayManager.instance.Signbanner ? 1f - FillProgress : 0f;
+            
         }
         // Check if FillProgress is approximately 1 (with a small tolerance)
-        //float tolerance = 0.00002f; // Adjust tolerance as needed
-        if (Fill.fillAmount>=0.98 && Fill.fillAmount<1)
+        //float tolerance = 0.00002f;
+        // Trigger the event when FillProgress drops below the threshold
+        if (!hasInvoked && FillProgress <= 0.05f)
         {
-            Debug.Log("invoking event " +Fill.fillAmount);
+            Debug.Log("Invoking event, FillProgress = " + FillProgress);
             OnSignBoardExit?.Invoke();
+            hasInvoked = true;
         }
     }
+
 }

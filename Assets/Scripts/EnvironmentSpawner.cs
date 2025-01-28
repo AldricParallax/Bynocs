@@ -82,7 +82,7 @@ public class EnvironmentSpawner : MonoBehaviour
     private void SpawnbuildingsRight()
     {
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
-        Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
+        Quaternion newQuaternion = Quaternion.Euler(-90, 0, -90);
 
         if (buildingPrefab != null)
         {
@@ -117,7 +117,7 @@ public class EnvironmentSpawner : MonoBehaviour
     private void SpawnbuildingsLeft()
     {
         GameObject buildingPrefab = prefabController.GetRandomBuildingPrefab();
-        Quaternion newQuaternion = Quaternion.Euler(-90, 0, -90);
+        Quaternion newQuaternion = Quaternion.Euler(-90, 90, 0);
 
         if (buildingPrefab != null)
         {
@@ -140,7 +140,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 AddToRecentPositions(spawnPosition);
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
-                newBuilding.GetComponent<PrefabScript>().isMovingUp = true;
+                newBuilding.GetComponent<PrefabScript>().isMovingUp = false;
                 newBuilding.transform.localScale *= 1.5f;
 
             }
