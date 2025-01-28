@@ -132,9 +132,9 @@ public class UIHandler : MonoBehaviour
         }
         // Check if FillProgress is approximately 1 (with a small tolerance)
         //float tolerance = 0.00002f; // Adjust tolerance as needed
-        if (Fill.fillAmount>=0.98)
+        if (Fill.fillAmount>=0.98 && Fill.fillAmount<1)
         {
-            Debug.Log("invoking event");
+            Debug.Log("invoking event " +Fill.fillAmount);
             OnSignBoardExit?.Invoke();
         }
     }

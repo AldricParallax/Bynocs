@@ -4442,7 +4442,7 @@ PrefabInstance:
     - target: {fileID: 5296258003612348059, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5579205998490423901, guid: 30d8f6952c5599b4586c6854e3205ef8,
         type: 3}
@@ -4670,7 +4670,7 @@ GameObject:
   - component: {fileID: 869964507}
   - component: {fileID: 869964506}
   m_Layer: 5
-  m_Name: Start Button
+  m_Name: Skip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5856,7 +5856,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8a11965baff62704b8c93e84e7ed59e7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

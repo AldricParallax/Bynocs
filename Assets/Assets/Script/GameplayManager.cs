@@ -66,7 +66,7 @@ public class GameplayManager : MonoBehaviour
         switch (TutorialSemaphore)
         {
             case 0:
-                //EyeToggle.instance.UpdateEye(-1);
+                EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
@@ -78,14 +78,14 @@ public class GameplayManager : MonoBehaviour
             case 1:
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[2]); // Start The Challenge
                 yield return new WaitForSeconds(2);
-                //EyeToggle.instance.UpdateEye(0);
+                EyeToggle.instance.UpdateEye(0);
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[3]);
                 SpawnBridge();
                 break;
 
             case 2:
-                //EyeToggle.instance.UpdateEye(-1);
+                EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
                 //EyeToggle.instance.UpdateEye(1);
@@ -125,6 +125,7 @@ public class GameplayManager : MonoBehaviour
 
     public void SpawnBridge()
     {
+        Debug.Log("Spawning Bridge and Progress Bar Value is "+ UIHandler.instance.Fill.fillAmount);
         if (Signbanner) Destroy(Signbanner.gameObject);
 
         GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
@@ -137,18 +138,22 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
         Debug.Log("Subscribed to SignBoard Event");
     }
+    int i=0;
+
     private void HandleSignBoardExit()
     {
+
         // Check if the player didn't answer
         if (!VehicleSpeedHandler.instance.IsGivingAnswerAllowed)
         {
             // Trigger the blinking effect
             BlinkAnswerButtons();
-        }
+            UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
 
-        // Unsubscribe from the event to avoid memory leaks
-       UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
-        
+
+            // Unsubscribe from the event to avoid memory leaks
+
+        }
     }
     public void StartGameCountDown()
     {
@@ -178,14 +183,14 @@ public class GameplayManager : MonoBehaviour
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
             LoopCount++;
-            //EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
+            EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
             RightEyeBlock = !RightEyeBlock;
             SpawnBridge();
         }
 
         else
         {
-            //EyeToggle.instance.UpdateEye(-1);
+            EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             // Add Total Score
             Result.SetActive(true);
