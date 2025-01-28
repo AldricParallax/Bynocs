@@ -131,8 +131,8 @@ public class UIHandler : MonoBehaviour
             Fill.fillAmount = GameplayManager.instance.Signbanner ? 1f - FillProgress : 0f;
         }
         // Check if FillProgress is approximately 1 (with a small tolerance)
-        float tolerance = 0.00002f; // Adjust tolerance as needed
-        if (Fill.fillAmount>=0.998)
+        //float tolerance = 0.00002f; // Adjust tolerance as needed
+        if (Fill.fillAmount>=0.98)
         {
             Debug.Log("invoking event");
             OnSignBoardExit?.Invoke();
