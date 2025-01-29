@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-using Microsoft.Unity.VisualStudio.Editor;
+using System.Linq;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -13,15 +13,22 @@ public class GameplayManager : MonoBehaviour
     public float BuildingSpeed = 10f;
     public GameObject SignbannerPrefab;
     public SignBoard Signbanner;
+    
     Transform StartLoc;
-    List<int> SpeedValues = new List<int> { 25, 40, 45, 60, 75 };
+    public Dictionary<int, int> SpeedValues = new Dictionary<int, int>{
+        { 25, 10 },
+        { 40, 15 },
+        { 45 ,20 },
+        { 60, 25 },
+        { 75, 30 },
+    };
     bool RightEyeBlock = false;
     int LoopCount = 0;
     int Score = 0;
     public GameObject Result;
     public TMPro.TMP_Text ResultText;
     public TMPro.TMP_Text SpeedMeter;
-
+    public KeyValuePair<int, int> selectedpair= new KeyValuePair<int, int>(0,0);
 
     private void Awake()
     {
@@ -44,7 +51,7 @@ public class GameplayManager : MonoBehaviour
 
     private void Update()
     {
-        SpeedMeter.text = BuildingSpeed.ToString();
+        SpeedMeter.text = selectedpair.Key.ToString();
     }
 
     public void QuitGame()
@@ -60,6 +67,7 @@ public class GameplayManager : MonoBehaviour
 
     IEnumerator TutorialLoop()
     {
+        yield return new WaitForSeconds(4f);
         //BlinkAnswerButtons();
         Debug.LogError(TutorialSemaphore);
         VehicleSpeedHandler.instance.IsGivingAnswerAllowed = true;
@@ -99,12 +107,19 @@ public class GameplayManager : MonoBehaviour
         }
     
     }
-
-    public int GetRandomNumberFromList()
+    public KeyValuePair<int,int> GetRandomNumberFromList(/*bool Display, bool Actualvalue*/)
     {
+        
+        // Get a list of keys from the dictionary
+        List<int> keys = new List<int>(SpeedValues.Keys);
 
-        int randomIndex = UnityEngine.Random.Range(0, SpeedValues.Count);
-        return SpeedValues[randomIndex];
+        // Generate a random index
+        int randomIndex = UnityEngine.Random.Range(0, keys.Count);
+
+        // Get the random key
+        int randomKey = keys[randomIndex];
+        return new KeyValuePair<int, int>(randomKey, SpeedValues[randomKey]);
+        
     }
 
     public List<int> GetRandomFourElementList(int value)
@@ -112,13 +127,13 @@ public class GameplayManager : MonoBehaviour
         List<int> newArr = new List<int>();
         int Val;
         while (newArr.Count != 4) {
-            Val = GetRandomNumberFromList();
+            Val = GetRandomNumberFromList().Key;
             if (newArr.Contains(Val)) continue;
             newArr.Add(Val);
         }
-        if (!newArr.Contains(value))
+        if (!newArr.Contains(selectedpair.Key))
             newArr[UnityEngine.Random.Range(0, newArr.Count)] = value;
-
+        Debug.Log(newArr.ToString());
         return newArr;
 
     }
@@ -127,21 +142,19 @@ public class GameplayManager : MonoBehaviour
     {
         
         if (Signbanner) {  Destroy(Signbanner.gameObject);  }
-        Debug.Log("Spawning Bridge and Progress Bar Value is " + UIHandler.instance.FillProgress);
         UIHandler.instance.FillProgress = 1;
         UIHandler.instance.hasInvoked = false;
         GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
         UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
         Signbanner = obj.GetComponent<SignBoard>();
-        obj.transform.localScale *= 2f;
-        VehicleSpeedHandler.instance.SelectedSpeed = GetRandomNumberFromList();
-        Signbanner.SetSpeed(VehicleSpeedHandler.instance.SelectedSpeed);
-
-        VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(VehicleSpeedHandler.instance.SelectedSpeed));
-        
+        //obj.transform.localScale *= 2f;
+        selectedpair = GetRandomNumberFromList();
+        VehicleSpeedHandler.instance.SelectedSpeed = selectedpair.Value;
+        Signbanner.SetSpeed(GameplayManager.instance.selectedpair.Key);
+        VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(selectedpair.Key));
         Debug.Log("Subscribed to SignBoard Event");
     }
-    int i=0;
+    
 
     public void HandleSignBoardExit()
     {

@@ -13,7 +13,7 @@ public class AnswerButtonOption : MonoBehaviour
     {
         GetComponent<Button>().image.color = IsCorrect ? Color.green : Color.red;
         transform.GetChild(0).GetComponent<TMP_Text>().color = IsCorrect ? new Color(0f, 0.9803922f, 0.509804f) : new Color(1f, 0.6784314f, 0.6784314f);
-        GameplayManager.instance.BuildingSpeed = speedValue;
+        GameplayManager.instance.BuildingSpeed = GameplayManager.instance.SpeedValues[speedValue];
         VehicleSpeedHandler.instance.SetButtonEnable(false);
     }
 
@@ -24,7 +24,7 @@ public class AnswerButtonOption : MonoBehaviour
         GetComponent<Button>().image.color = Color.white;
         transform.GetChild(0).GetComponent<TMP_Text>().color = Color.white;
         transform.GetChild(0).GetComponent<TMP_Text>().text = Value.ToString();
-        IsCorrect = Value == VehicleSpeedHandler.instance.SelectedSpeed;
+        IsCorrect = GameplayManager.instance.SpeedValues[Value] == VehicleSpeedHandler.instance.SelectedSpeed;
     }
 
     // Update is called once per frame

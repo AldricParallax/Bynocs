@@ -181,6 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
-  endpoint: {fileID: 7090935421090611125, guid: 5273d3bd7169e694e96e6be29f07a57f,
+  endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
   isMovingUp: 1

@@ -20,7 +20,7 @@ public class EnvironmentSpawner : MonoBehaviour
     [SerializeField] private PrefabController prefabController; // Reference to the PrefabController
 
     [SerializeField]private List<Vector3> recentZPositions = new List<Vector3>(); // List to store recent Z positions
-
+    public GameObject ScenePrefabParent;
     private void Start()
     {
         StartCoroutine(SpawnDelay());
@@ -105,6 +105,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 AddToRecentPositions(spawnPosition);
 
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
+                newBuilding.transform.parent = ScenePrefabParent.transform;
                 newBuilding.transform.localScale *= 1.5f;
             }
             else
@@ -142,7 +143,7 @@ public class EnvironmentSpawner : MonoBehaviour
                 GameObject newBuilding = Instantiate(buildingPrefab, spawnPosition, newQuaternion);
                 newBuilding.GetComponent<PrefabScript>().isMovingUp = false;
                 newBuilding.transform.localScale *= 1.5f;
-
+                newBuilding.transform.parent = ScenePrefabParent.transform;
             }
             else
             {
