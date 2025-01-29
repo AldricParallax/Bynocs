@@ -18,8 +18,8 @@ public class UIHandler : MonoBehaviour
     public float FillProgress = 1f;
     public Image Fill;
     public event Action OnSignBoardExit;
-
-
+    [SerializeField] GameObject Settings_canvas;
+    [SerializeField] private Image Settings_Screen;
     // Start is called before the first frame update
 
     private void Awake()
@@ -40,15 +40,15 @@ public class UIHandler : MonoBehaviour
     }
 
 
-
+    public void UpdateSettingsScreen()
+    {
+        Settings_canvas.SetActive(true);
+        UpdateCenterScreen(Settings_Screen.mainTexture);
+    }
 
 
     public void UpdateCenterScreen(Texture Value)
     {
-
-
-
-
         if(!Centralmat) Centralmat = GetComponent<MeshRenderer>().materials[1];
         Centralmat.SetTexture("_MainTex", Value);
         Centralmat.SetTexture("_EmissionMap", Value);
