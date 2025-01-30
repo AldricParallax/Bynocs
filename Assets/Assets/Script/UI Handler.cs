@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
+
 
 
 public class UIHandler : MonoBehaviour
@@ -10,14 +12,19 @@ public class UIHandler : MonoBehaviour
 
     public static UIHandler instance;
     Material Centralmat;
+    Material LeftMAt;
     public List<GameObject> ButtonsList = new List<GameObject>();
     public List<Texture> IntroImages = new List<Texture>();
     public List<Texture> TutorialImages = new List<Texture>();
+    public List<Texture> LeftScreenTexture = new List<Texture>();
     public float FillProgress = 1f;
     public Image Fill;
     public event Action OnSignBoardExit;
     [SerializeField] GameObject Settings_canvas;
-    [SerializeField] private Image Settings_Screen;
+    [SerializeField] public Image Settings_Screen;
+    [SerializeField] GameObject prefabparent;
+    [SerializeField] TextMeshProUGUI[] SettingsText;
+    public int bannertextFont=36;
     // Start is called before the first frame update
 
     private void Awake()
@@ -38,11 +45,7 @@ public class UIHandler : MonoBehaviour
     }
 
 
-    public void UpdateSettingsScreen()
-    {
-        Settings_canvas.SetActive(true);
-        UpdateCenterScreen(Settings_Screen.mainTexture);
-    }
+    
 
 
     public void UpdateCenterScreen(Texture Value)
@@ -82,13 +85,30 @@ public class UIHandler : MonoBehaviour
                 UpdateCenterScreen(IntroImages[2]);
                 //GameplayManager.instance.SpawnBridge();
                 break;
-                
+
+            case 1:
+                UpdateButton(0);
+                UpdateCenterScreen(IntroImages[2]);
+                break;
 
             default:
                 break;
         }
     }
+    public void updateLeftScreen(bool Mainmenu)
+    {
 
+        LeftMAt = GetComponent<MeshRenderer>().materials[2];
+        if (Mainmenu)
+        {
+            LeftMAt.SetTexture("_MainTex", LeftScreenTexture[0]);
+            LeftMAt.SetTexture("_EmissionMap", LeftScreenTexture[0]);
+        }
+        else {
+            LeftMAt.SetTexture("_MainTex", LeftScreenTexture[1]);
+            LeftMAt.SetTexture("_EmissionMap", LeftScreenTexture[1]);
+        }
+    }
     IEnumerator BlinkButtons()
     {
         int blinkCount = 3; // Number of times to blink
@@ -140,5 +160,103 @@ public class UIHandler : MonoBehaviour
             hasInvoked = true;
         }
     }
+    public void EnableSettings()
+    {
+        
+        UpdateCenterScreen(Settings_Screen.mainTexture);
+        Settings_canvas.SetActive(true);
+        Time.timeScale = 0;
 
+    }
+    public void DisableSettings()
+    {
+        Time.timeScale = 1;
+        Settings_canvas.SetActive(false);
+        UpdateCenterScreen(IntroImages[2]);
+    }
+    public void MotionSicknessAssist(bool enable)
+    {
+        if (enable)
+        {
+
+            prefabparent.SetActive(false);
+            SettingsText[2].text = "Enabled";
+        }
+        else
+        {
+            prefabparent.SetActive(true);
+            SettingsText[2].text = "Disabled";
+        }
+    }
+    IEnumerator FadeInFadeOut()
+    {
+        float duration = 2f; // Duration of the fade in and fade out
+        float startAlpha = 0f; // Starting alpha value
+        float endAlpha = 1f; // Ending alpha value
+
+        // Fade in
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / duration;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, normalizedTime);
+            SetShaderAlpha(alpha);
+            yield return null;
+        }
+
+        // Wait for a brief period
+        yield return new WaitForSeconds(2f);
+
+        // Fade out
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            float normalizedTime = t / duration;
+            float alpha = Mathf.Lerp(endAlpha, startAlpha, normalizedTime);
+            SetShaderAlpha(alpha);
+            yield return null;
+        }
+    }
+
+    void SetShaderAlpha(float alpha)
+    {
+        // Replace "YourShaderName" with the actual name of your shader
+        Material shaderMaterial = GetComponent<MeshRenderer>().materials[0];
+        shaderMaterial.SetFloat("_Alpha", alpha);
+    }
+   
+    public void EXittoMainMenu()
+    {
+        GameplayManager.instance.StopAllCoroutines();
+        //StopAllCoroutines();
+        //StopCoroutine(GameplayManager.instance.TutorialLoop());
+        //StopCoroutine(GameplayManager.instance.GameCountdown());
+        if(GameplayManager.instance.Signbanner != null)
+        {
+            Destroy(GameplayManager.instance.Signbanner.gameObject);
+        }
+        GameplayManager.instance.Score = 0;
+        updateLeftScreen(true);
+        VehicleSpeedHandler.instance.Canvas.SetActive(false);
+        UpdateScreen(1);
+        EyeToggle.instance.StartEyeFadeLoop(1, 0f, 1f, 1.5f); // Left Eye fades in & out
+        EyeToggle.instance.StartEyeFadeLoop(0, 0f, 1f, 1.5f); // Right Eye fades in & out
+    }
+    public void ScaleSetting(bool increase)
+    {
+        if (increase)
+        {
+            ////GameplayManager.instance.SignbannerPrefab.transform.localScale= new Vector3(0.00593353016f, 0.00720383693f, 0.00593353016f);
+            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.fontSize=50;
+            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.alignment=TextAlignmentOptions.Top;
+            SettingsText[1].text = "Large";
+            bannertextFont = 50;
+        }
+        else
+        {
+            //GameplayManager.instance.SignbannerPrefab.transform.localScale = new Vector3(0.00593353016f, 0.00702470634f, 0.00593353016f);
+            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.fontSize = 36;
+            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.alignment = TextAlignmentOptions.Midline;
+            SettingsText[1].text = "Standard";
+            bannertextFont = 36;
+        }
+    }
 }

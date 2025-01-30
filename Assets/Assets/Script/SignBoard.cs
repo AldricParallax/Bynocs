@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
-using Unity.Mathematics;
-using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 
 public class SignBoard : MonoBehaviour
 {
@@ -13,13 +8,14 @@ public class SignBoard : MonoBehaviour
     [SerializeField] Transform endpoint;
     [SerializeField] Transform RearCarpoint;
     float fillProgress = 1f;
-    
+    public TextMeshPro speedText;
     // Event to notify when the signboard exits
     Vector3 StartLoc;
     public bool isMovingUp = true;
 
     private void Start()
     {
+        speedText.fontSize=UIHandler.instance.bannertextFont;
         endpoint = GameObject.Find("SignPoint").transform;
         RearCarpoint = GameObject.Find("RearPoint").transform;
 

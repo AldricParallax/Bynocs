@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-using System.Linq;
+using UnityEditor;
+
 
 public class GameplayManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class GameplayManager : MonoBehaviour
     };
     bool RightEyeBlock = false;
     int LoopCount = 0;
-    int Score = 0;
+    public int Score = 0;
     public GameObject Result;
     public TMPro.TMP_Text ResultText;
     public TMPro.TMP_Text SpeedMeter;
@@ -36,6 +37,7 @@ public class GameplayManager : MonoBehaviour
         {
             instance = this;
         }
+        
     }
 
 
@@ -60,22 +62,26 @@ public class GameplayManager : MonoBehaviour
     }
 
     public void BeginTutorial() {
-        
+
+        UIHandler.instance.updateLeftScreen(false);
         StartCoroutine(TutorialLoop());
         
     }
 
-    IEnumerator TutorialLoop()
+    public IEnumerator TutorialLoop()
     {
-        yield return new WaitForSeconds(4f);
-        //BlinkAnswerButtons();
-        Debug.LogError(TutorialSemaphore);
+        
+        //Debug.LogError(TutorialSemaphore);
         VehicleSpeedHandler.instance.IsGivingAnswerAllowed = true;
+        GameObject targetObject = GameObject.Find("Sign Board Ui");
         switch (TutorialSemaphore)
         {
             case 0:
                 //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
+                yield return new WaitForSeconds(5f);
+                
+                if (targetObject != null) { Destroy(targetObject); }
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
                 VehicleSpeedHandler.instance.Canvas.SetActive(true);
@@ -93,10 +99,10 @@ public class GameplayManager : MonoBehaviour
                 break;
 
             case 2:
-                //EyeToggle.instance.UpdateEye(-1);
+                EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
-                EyeToggle.instance.UpdateEye(1);
+                //EyeToggle.instance.UpdateEye(1);
                 yield return new WaitForSeconds(2);
                 SpawnBridge();
                 break;
@@ -176,7 +182,7 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameCountdown());
     }
 
-    IEnumerator GameCountdown()
+    public IEnumerator GameCountdown()
     {
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[6]);
         yield return new WaitForSeconds(1);
@@ -228,7 +234,7 @@ public class GameplayManager : MonoBehaviour
                 BeginTutorial();
             if(TutorialSemaphore == -1)
             {
-                EyeToggle.instance.UpdateEye(-1);
+                //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[5]);
                 VehicleSpeedHandler.instance.Canvas.SetActive(false);
                 UIHandler.instance.UpdateButton(2);
@@ -238,7 +244,7 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
-            EyeToggle.instance.UpdateEye(-1);
+            //EyeToggle.instance.UpdateEye(-1);
             //VehicleSpeedHandler.instance.Canvas.SetActive(false);
             StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 3f));
             if (Correct)
