@@ -225,11 +225,15 @@ public class UIHandler : MonoBehaviour
    
     public void EXittoMainMenu()
     {
+        EyeToggle.instance.StartEyeFadeLoop(1, 0f, 1f, 1.5f); // Left Eye fades in & out
+        EyeToggle.instance.StartEyeFadeLoop(0, 0f, 1f, 1.5f); // Right Eye fades in & out
         GameplayManager.instance.StopAllCoroutines();
         //StopAllCoroutines();
         //StopCoroutine(GameplayManager.instance.TutorialLoop());
         //StopCoroutine(GameplayManager.instance.GameCountdown());
-        if(GameplayManager.instance.Signbanner != null)
+        GameObject targetObject = GameObject.Find("Sign Board Ui");
+        if(targetObject != null) { Destroy(targetObject); }
+        if (GameplayManager.instance.Signbanner != null)
         {
             Destroy(GameplayManager.instance.Signbanner.gameObject);
         }
@@ -237,8 +241,7 @@ public class UIHandler : MonoBehaviour
         updateLeftScreen(true);
         VehicleSpeedHandler.instance.Canvas.SetActive(false);
         UpdateScreen(1);
-        EyeToggle.instance.StartEyeFadeLoop(1, 0f, 1f, 1.5f); // Left Eye fades in & out
-        EyeToggle.instance.StartEyeFadeLoop(0, 0f, 1f, 1.5f); // Right Eye fades in & out
+        
     }
     public void ScaleSetting(bool increase)
     {

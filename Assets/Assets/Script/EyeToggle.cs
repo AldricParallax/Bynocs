@@ -89,8 +89,9 @@ public class EyeToggle : MonoBehaviour
 
         
         
-            yield return StartCoroutine(FadeEye(property, maxAlpha, duration)); // Fade in
-            yield return StartCoroutine(FadeEye(property, minAlpha, duration)); // Fade out
+        yield return StartCoroutine(FadeEye(property, maxAlpha, duration)); // Fade in
+        yield return new WaitForSeconds(0.5f); // Wait for a brief period
+        yield return StartCoroutine(FadeEye(property, minAlpha, duration)); // Fade out
         
     }
 }

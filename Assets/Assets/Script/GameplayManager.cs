@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEditor;
+using Unity.VisualScripting;
 
 
 public class GameplayManager : MonoBehaviour
@@ -11,7 +12,7 @@ public class GameplayManager : MonoBehaviour
     public static GameplayManager instance;
     public int TutorialSemaphore = 0;
     public float Multiplier = 3.6f;
-    public float BuildingSpeed = 10f;
+    public int BuildingSpeed = 10;
     public GameObject SignbannerPrefab;
     public SignBoard Signbanner;
     
@@ -53,7 +54,13 @@ public class GameplayManager : MonoBehaviour
 
     private void Update()
     {
-        SpeedMeter.text = selectedpair.Key.ToString();
+        foreach (var item in SpeedValues)
+        {
+            if (item.Value == BuildingSpeed)
+            {
+                SpeedMeter.text = item.Key.ToString();
+            }
+        }
     }
 
     public void QuitGame()
@@ -156,7 +163,7 @@ public class GameplayManager : MonoBehaviour
         //obj.transform.localScale *= 2f;
         selectedpair = GetRandomNumberFromList();
         VehicleSpeedHandler.instance.SelectedSpeed = selectedpair.Value;
-        Signbanner.SetSpeed(GameplayManager.instance.selectedpair.Key);
+        Signbanner.SetSpeed(selectedpair.Key);
         VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(selectedpair.Key));
         Debug.Log("Subscribed to SignBoard Event");
     }

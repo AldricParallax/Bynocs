@@ -49,6 +49,7 @@ public class SignBoard : MonoBehaviour
         if (transform.position.x > endpoint.position.x || (transform.position.x > RearCarpoint.position.x && VehicleSpeedHandler.instance.IsGivingAnswerAllowed))
         {
             bool isCorrect = (VehicleSpeedHandler.instance.SelectedSpeed == GameplayManager.instance.BuildingSpeed);
+            
             GameplayManager.instance.OnSignBannerEnd(isCorrect);
             
            
