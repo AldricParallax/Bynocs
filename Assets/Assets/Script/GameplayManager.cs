@@ -15,7 +15,7 @@ public class GameplayManager : MonoBehaviour
     public int BuildingSpeed = 10;
     public GameObject SignbannerPrefab;
     public SignBoard Signbanner;
-    
+    public int[] ActualSpeedlist = new int[] { 10, 15, 20, 25, 30 };
     Transform StartLoc;
     public Dictionary<int, int> SpeedValues = new Dictionary<int, int>{
         { 25, 10 },
@@ -31,14 +31,17 @@ public class GameplayManager : MonoBehaviour
     public TMPro.TMP_Text ResultText;
     public TMPro.TMP_Text SpeedMeter;
     public KeyValuePair<int, int> selectedpair= new KeyValuePair<int, int>(0,0);
-
+    int i=0;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        
+        //foreach (var item in SpeedValues)
+        //{
+        //    SpeedValues[item.Key] = ActualSpeedlist[i];
+        //}
     }
 
 
@@ -158,7 +161,7 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.FillProgress = 1;
         UIHandler.instance.hasInvoked = false;
         GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
-        UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
+        //UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
         Signbanner = obj.GetComponent<SignBoard>();
         //obj.transform.localScale *= 2f;
         selectedpair = GetRandomNumberFromList();
@@ -169,21 +172,21 @@ public class GameplayManager : MonoBehaviour
     }
     
 
-    public void HandleSignBoardExit()
-    {
+    //public void HandleSignBoardExit()
+    //{
 
-        // Check if the player didn't answer
-        if (!VehicleSpeedHandler.instance.IsGivingAnswerAllowed)
-        {
-            // Trigger the blinking effect
-            BlinkAnswerButtons();
-            UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
+    //    // Check if the player didn't answer
+    //    if (!VehicleSpeedHandler.instance.IsGivingAnswerAllowed)
+    //    {
+    //        // Trigger the blinking effect
+    //        BlinkAnswerButtons();
+    //        UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
 
 
-            // Unsubscribe from the event to avoid memory leaks
+    //        // Unsubscribe from the event to avoid memory leaks
 
-        }
-    }
+    //    }
+    //}
     public void StartGameCountDown()
     {
         StartCoroutine(GameCountdown());
@@ -231,6 +234,7 @@ public class GameplayManager : MonoBehaviour
     // Fix later
     public void OnSignBannerEnd(bool Correct)
     {
+        if (Signbanner) { Destroy(Signbanner.gameObject); }
         if (TutorialSemaphore != -1)
         {
             if (Correct) { 
@@ -253,7 +257,7 @@ public class GameplayManager : MonoBehaviour
         {
             //EyeToggle.instance.UpdateEye(-1);
             //VehicleSpeedHandler.instance.Canvas.SetActive(false);
-            StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 3f));
+            StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 1f));
             if (Correct)
             { Score++; }
         }
@@ -266,33 +270,33 @@ public class GameplayManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         action.Invoke();
     }
-    IEnumerator BlinkButtons()
-    {
-        int blinkCount = 3; // Number of times to blink
-        float blinkDuration = 0.5f; // Duration of each blink
+    //IEnumerator BlinkButtons()
+    //{
+    //    int blinkCount = 3; // Number of times to blink
+    //    float blinkDuration = 0.5f; // Duration of each blink
         
-        for (int i = 0; i < blinkCount; i++)
-        {
-            // Set all buttons to red
-            foreach (var button in VehicleSpeedHandler.instance.Buttons)
-            {
-                button.GetComponent<Button>().image.color = Color.red;
-                Debug.LogError("color changed to red");
-            }
-            yield return new WaitForSeconds(blinkDuration);
+    //    for (int i = 0; i < blinkCount; i++)
+    //    {
+    //        // Set all buttons to red
+    //        foreach (var button in VehicleSpeedHandler.instance.Buttons)
+    //        {
+    //            button.GetComponent<Button>().image.color = Color.red;
+    //            Debug.LogError("color changed to red");
+    //        }
+    //        yield return new WaitForSeconds(blinkDuration);
 
-            // Reset buttons to their original color
-            foreach (var button in VehicleSpeedHandler.instance.Buttons)
-            {
-                button.GetComponent<Button>().image.color = Color.white;
-                Debug.LogError("color changed to white");
-            }
-            yield return new WaitForSeconds(blinkDuration);
-        }
-    }
+    //        // Reset buttons to their original color
+    //        foreach (var button in VehicleSpeedHandler.instance.Buttons)
+    //        {
+    //            button.GetComponent<Button>().image.color = Color.white;
+    //            Debug.LogError("color changed to white");
+    //        }
+    //        yield return new WaitForSeconds(blinkDuration);
+    //    }
+    //}
 
-    public void BlinkAnswerButtons()
-    {
-        StartCoroutine(BlinkButtons());
-    }
+    //public void BlinkAnswerButtons()
+    //{
+    //    StartCoroutine(BlinkButtons());
+    //}
 }

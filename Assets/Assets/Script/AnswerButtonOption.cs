@@ -1,8 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using ColorUtility = UnityEngine.ColorUtility;
 
 public class AnswerButtonOption : MonoBehaviour
 {
@@ -11,9 +13,12 @@ public class AnswerButtonOption : MonoBehaviour
 
     public void OnClickfunc()
     {
-        GetComponent<Button>().image.color = IsCorrect ? Color.green : Color.red;
-        transform.GetChild(0).GetComponent<TMP_Text>().color = IsCorrect ? new Color(0f, 0.9803922f, 0.509804f) : new Color(1f, 0.6784314f, 0.6784314f);
+        ColorUtility.TryParseHtmlString("#99999", out Color Text);
+        ColorUtility.TryParseHtmlString("#33333", out Color Button);
+        GetComponent<Button>().image.color = Button;
+        transform.GetChild(0).GetComponent<TMP_Text>().color = Text;
         GameplayManager.instance.BuildingSpeed = GameplayManager.instance.SpeedValues[speedValue];
+        GameplayManager.instance.OnSignBannerEnd(IsCorrect);
         VehicleSpeedHandler.instance.SetButtonEnable(false);
     }
 

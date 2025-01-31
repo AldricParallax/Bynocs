@@ -188,34 +188,7 @@ public class UIHandler : MonoBehaviour
             SettingsText[2].text = "Disabled";
         }
     }
-    IEnumerator FadeInFadeOut()
-    {
-        float duration = 2f; // Duration of the fade in and fade out
-        float startAlpha = 0f; // Starting alpha value
-        float endAlpha = 1f; // Ending alpha value
-
-        // Fade in
-        for (float t = 0f; t < duration; t += Time.deltaTime)
-        {
-            float normalizedTime = t / duration;
-            float alpha = Mathf.Lerp(startAlpha, endAlpha, normalizedTime);
-            SetShaderAlpha(alpha);
-            yield return null;
-        }
-
-        // Wait for a brief period
-        yield return new WaitForSeconds(2f);
-
-        // Fade out
-        for (float t = 0f; t < duration; t += Time.deltaTime)
-        {
-            float normalizedTime = t / duration;
-            float alpha = Mathf.Lerp(endAlpha, startAlpha, normalizedTime);
-            SetShaderAlpha(alpha);
-            yield return null;
-        }
-    }
-
+   
     void SetShaderAlpha(float alpha)
     {
         // Replace "YourShaderName" with the actual name of your shader
@@ -241,7 +214,8 @@ public class UIHandler : MonoBehaviour
         updateLeftScreen(true);
         VehicleSpeedHandler.instance.Canvas.SetActive(false);
         UpdateScreen(1);
-        
+
+
     }
     public void ScaleSetting(bool increase)
     {
