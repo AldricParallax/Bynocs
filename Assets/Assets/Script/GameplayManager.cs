@@ -24,14 +24,12 @@ public class GameplayManager : MonoBehaviour
         { 60, 25 },
         { 75, 30 },
     };
-    bool RightEyeBlock = false;
+    public bool RightEyeBlock = false;
     int LoopCount = 0;
-    public int Score = 0;
     public GameObject Result;
     public TMPro.TMP_Text ResultText;
     public TMPro.TMP_Text SpeedMeter;
     public KeyValuePair<int, int> selectedpair= new KeyValuePair<int, int>(0,0);
-    int i=0;
     private void Awake()
     {
         if (instance == null)
@@ -205,6 +203,7 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[10]);
         UIHandler.instance.UpdateButton(1);
         UIHandler.instance.ButtonsList[1].transform.GetChild(0).gameObject.SetActive(false);
+        TimerManager.instance.StartTimer();
         ActualGameLoop();
     }
 
@@ -226,7 +225,6 @@ public class GameplayManager : MonoBehaviour
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             // Add Total Score
             Result.SetActive(true);
-            ResultText.text = (Score == 10) ? Score.ToString() : "0" + Score.ToString();
         }
     }
 
@@ -234,6 +232,7 @@ public class GameplayManager : MonoBehaviour
     // Fix later
     public void OnSignBannerEnd(bool Correct)
     {
+        
         if (Signbanner) { Destroy(Signbanner.gameObject); }
         if (TutorialSemaphore != -1)
         {
@@ -255,11 +254,13 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
+            TimerManager.instance.RecordResponse();
+
             //EyeToggle.instance.UpdateEye(-1);
             //VehicleSpeedHandler.instance.Canvas.SetActive(false);
             StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 1f));
-            if (Correct)
-            { Score++; }
+            
+            
         }
 
 

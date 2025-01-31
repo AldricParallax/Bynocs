@@ -210,7 +210,7 @@ public class UIHandler : MonoBehaviour
         {
             Destroy(GameplayManager.instance.Signbanner.gameObject);
         }
-        GameplayManager.instance.Score = 0;
+       
         updateLeftScreen(true);
         VehicleSpeedHandler.instance.Canvas.SetActive(false);
         UpdateScreen(1);
