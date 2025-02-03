@@ -8,15 +8,16 @@ public class ResponseData
     public float responseTime;
     public float responseDuration;
     public bool isCorrect;
-    public string blockedEye; // "Left", "Right", or "None"
-    
-    public ResponseData(float spawnTime, float responseTime, bool isCorrect, string blockedEye)
+    public string OpenedEye; // "Left", "Right", or "None"
+    public bool answered = false;
+    public ResponseData(float spawnTime, float responseTime, bool isCorrect, string blockedEye,bool answered)
     {
         this.spawnTime = spawnTime;
         this.responseTime = responseTime;
         this.responseDuration = responseTime - spawnTime;
         this.isCorrect = isCorrect;
-        this.blockedEye = blockedEye;
+        this.OpenedEye = blockedEye;
+        this.answered = answered;
     }
 }
 public class TimerManager : MonoBehaviour
@@ -24,14 +25,18 @@ public class TimerManager : MonoBehaviour
     public static TimerManager instance;
 
     [SerializeField]private float startTime;
+    [SerializeField]public float spawnTime;
     [SerializeField]private float timerDuration = -1f;
     [SerializeField]private bool isRunning = false;
     [SerializeField]public float responseTime;
     [SerializeField]public bool userWasCorrect = true;  // Example condition
+    [SerializeField]public bool Answered = false;  // Example condition
     [SerializeField]public string openedeye = "L";  // Can be "Right" or "None"
     [SerializeField]public List<ResponseData> responseRecords = new List<ResponseData>();
     private Coroutine timerCoroutine;
-    
+    private int currentIndex;
+    [SerializeField]private int[] duration=new int[] { 2,5,10};
+
     private void Awake()
     {
         if (instance == null)
@@ -75,7 +80,7 @@ public class TimerManager : MonoBehaviour
     public void SetTimerDuration(float duration)
     {
         timerDuration = duration;
-        StartTimer();
+        
     }
 
     // Coroutine for tracking time
@@ -118,7 +123,7 @@ public class TimerManager : MonoBehaviour
         CalculateResponseTime(startTime, responseTime);
         if (!isRunning) return;
 
-        ResponseData newRecord = new ResponseData(startTime, responseTime, userWasCorrect, openedeye);
+        ResponseData newRecord = new ResponseData(spawnTime, responseTime, userWasCorrect, openedeye,Answered);
         responseRecords.Add(newRecord);
 
         
@@ -136,8 +141,90 @@ public class TimerManager : MonoBehaviour
         foreach (ResponseData record in responseRecords)
         {
             Debug.Log($"Spawn: {record.spawnTime}, Response: {record.responseTime}, Duration: {record.responseDuration}s, " +
-                      $"Correct: {record.isCorrect}, Opened Eye: {record.blockedEye}");
+                      $"Correct: {record.isCorrect}, Opened Eye: {record.OpenedEye}");
         }
     }
+    public void CycleTimeValue(bool cycleUp)
+    {
+        if (cycleUp)
+            currentIndex = (currentIndex + duration.Length - 1) % duration.Length;
+        else
+            currentIndex = (currentIndex + 1) % duration.Length;
+        
+        float selectedTime = duration[currentIndex];
+        UIHandler.instance.SettingsText[0].text = selectedTime.ToString() + "Mins";
+        SetTimerDuration(selectedTime);
+    }
+    public void CalculateResponseStats()
+    {
+        int totalShown = responseRecords.Count;
+        int correctResponses = 0;
+        int incorrectResponses = 0;
+        int unansweredResponses = 0;
+
+        int totalShownLeft = 0;
+        int correctLeft = 0;
+        int incorrectLeft = 0;
+        int unansweredLeft = 0;
+
+        int totalShownRight = 0;
+        int correctRight = 0;
+        int incorrectRight = 0;
+        int unansweredRight = 0;
+
+        foreach (ResponseData record in responseRecords)
+        {
+            // General stats
+            if (record.answered)
+            {
+                if (record.isCorrect)
+                    correctResponses++;
+                else
+                    incorrectResponses++;
+            }
+            else
+            {
+                unansweredResponses++;
+            }
+
+            // Eye-specific stats
+            if (record.OpenedEye == "L")
+            {
+                totalShownLeft++;
+                if (record.answered)
+                {
+                    if (record.isCorrect)
+                        correctLeft++;
+                    else
+                        incorrectLeft++;
+                }
+                else
+                {
+                    unansweredLeft++;
+                }
+            }
+            else if (record.OpenedEye == "R")
+            {
+                totalShownRight++;
+                if (record.answered)
+                {
+                    if (record.isCorrect)
+                        correctRight++;
+                    else
+                        incorrectRight++;
+                }
+                else
+                {
+                    unansweredRight++;
+                }
+            }
+        }
+
+        // Store in variables
+        Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
+        Debug.Log($"Left Eye -> Total: {totalShownLeft}, Correct: {correctLeft}, Incorrect: {incorrectLeft}, Unanswered: {unansweredLeft}");
+        Debug.Log($"Right Eye -> Total: {totalShownRight}, Correct: {correctRight}, Incorrect: {incorrectRight}, Unanswered: {unansweredRight}");
+    }
+
 }
 

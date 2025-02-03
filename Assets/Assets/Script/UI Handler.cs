@@ -23,7 +23,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] GameObject Settings_canvas;
     [SerializeField] public Image Settings_Screen;
     [SerializeField] GameObject prefabparent;
-    [SerializeField] TextMeshProUGUI[] SettingsText;
+    [SerializeField] public TextMeshProUGUI[] SettingsText;
     public int bannertextFont=36;
     // Start is called before the first frame update
 

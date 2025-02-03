@@ -1,9 +1,8 @@
-using System.Collections;
 
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
+
 using ColorUtility = UnityEngine.ColorUtility;
 
 public class AnswerButtonOption : MonoBehaviour
@@ -22,6 +21,7 @@ public class AnswerButtonOption : MonoBehaviour
             TimerManager.instance.responseTime = TimerManager.instance.GetCurrentTime();
             TimerManager.instance.userWasCorrect = IsCorrect;
             TimerManager.instance.openedeye = GameplayManager.instance.RightEyeBlock ? "L" : "R";
+            TimerManager.instance.Answered=true;
         }
         GameplayManager.instance.BuildingSpeed = GameplayManager.instance.SpeedValues[speedValue];
         GameplayManager.instance.OnSignBannerEnd(IsCorrect);

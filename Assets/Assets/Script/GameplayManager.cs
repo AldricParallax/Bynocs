@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.UI;
-using UnityEditor;
-using Unity.VisualScripting;
+
 
 
 public class GameplayManager : MonoBehaviour
@@ -17,6 +15,7 @@ public class GameplayManager : MonoBehaviour
     public SignBoard Signbanner;
     public int[] ActualSpeedlist = new int[] { 10, 15, 20, 25, 30 };
     Transform StartLoc;
+    [SerializeField] Transform endpoint;
     public Dictionary<int, int> SpeedValues = new Dictionary<int, int>{
         { 25, 10 },
         { 40, 15 },
@@ -36,10 +35,7 @@ public class GameplayManager : MonoBehaviour
         {
             instance = this;
         }
-        //foreach (var item in SpeedValues)
-        //{
-        //    SpeedValues[item.Key] = ActualSpeedlist[i];
-        //}
+       
     }
 
 
@@ -50,6 +46,7 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.UpdateScreen(0);
         EyeToggle.instance.UpdateEye(-1);
         StartLoc = GameObject.Find("SignSpawnPoint").transform;
+        endpoint = GameObject.Find("SignPoint").transform;
         //StartLoc.position = new Vector3(-767, 0.692149878f, -41.6f);
     }
 
@@ -107,7 +104,7 @@ public class GameplayManager : MonoBehaviour
                 break;
 
             case 2:
-                EyeToggle.instance.UpdateEye(-1);
+                //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
                 //EyeToggle.instance.UpdateEye(1);
@@ -154,37 +151,31 @@ public class GameplayManager : MonoBehaviour
 
     public void SpawnBridge()
     {
+
         
         if (Signbanner) {  Destroy(Signbanner.gameObject);  }
         UIHandler.instance.FillProgress = 1;
         UIHandler.instance.hasInvoked = false;
-        GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position,new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
-        //UIHandler.instance.OnSignBoardExit += HandleSignBoardExit;
-        Signbanner = obj.GetComponent<SignBoard>();
         //obj.transform.localScale *= 2f;
         selectedpair = GetRandomNumberFromList();
         VehicleSpeedHandler.instance.SelectedSpeed = selectedpair.Value;
+        GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position, new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
+        TimerManager.instance.spawnTime=TimerManager.instance.GetCurrentTime();
+        Signbanner = obj.GetComponent<SignBoard>();
         Signbanner.SetSpeed(selectedpair.Key);
         VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(selectedpair.Key));
         Debug.Log("Subscribed to SignBoard Event");
     }
+    public float returntimebetweenspawnandfinish()
+    {
+        Vector3 startPosition = StartLoc.position; // Assuming StartLoc is a valid position
+        Vector3 finishPosition =endpoint.position /* Provide the finish position here */;
+        float distance = Vector3.Distance(startPosition, finishPosition);
+        float time = distance / BuildingSpeed;
+        return time;
+    }
+
     
-
-    //public void HandleSignBoardExit()
-    //{
-
-    //    // Check if the player didn't answer
-    //    if (!VehicleSpeedHandler.instance.IsGivingAnswerAllowed)
-    //    {
-    //        // Trigger the blinking effect
-    //        BlinkAnswerButtons();
-    //        UIHandler.instance.OnSignBoardExit -= HandleSignBoardExit;
-
-
-    //        // Unsubscribe from the event to avoid memory leaks
-
-    //    }
-    //}
     public void StartGameCountDown()
     {
         StartCoroutine(GameCountdown());
@@ -204,25 +195,33 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.UpdateButton(1);
         UIHandler.instance.ButtonsList[1].transform.GetChild(0).gameObject.SetActive(false);
         TimerManager.instance.StartTimer();
+        Debug.Log("Game timer Started");
         ActualGameLoop();
     }
 
 
     void ActualGameLoop()
     {
-        if (LoopCount != 10)
+        Debug.Log("Time remaining: " + TimerManager.instance.gettimeremaining() + " Time Between Spawn and finsh: " + returntimebetweenspawnandfinish());
+        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish())
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
-            LoopCount++;
+            TimerManager.instance.Answered=false;
             //EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
             RightEyeBlock = !RightEyeBlock;
+            
+           
+            
             SpawnBridge();
+            
+            
         }
 
         else
         {
             //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
+            TimerManager.instance.CalculateResponseStats();
             // Add Total Score
             Result.SetActive(true);
         }
@@ -257,7 +256,7 @@ public class GameplayManager : MonoBehaviour
             TimerManager.instance.RecordResponse();
 
             //EyeToggle.instance.UpdateEye(-1);
-            //VehicleSpeedHandler.instance.Canvas.SetActive(false);
+            VehicleSpeedHandler.instance.Canvas.SetActive(false);
             StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 1f));
             
             

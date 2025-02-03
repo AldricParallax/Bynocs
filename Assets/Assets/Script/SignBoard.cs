@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class SignBoard : MonoBehaviour
 {
@@ -24,10 +23,7 @@ public class SignBoard : MonoBehaviour
         MoveDown();
         StartLoc = transform.position;
     }
-    public float returntimebetweenspawnandfinish()
-    {
-            return 0.0f;
-    }
+    
     public void SetSpeed(int speed)
     {
         transform.GetChild(0).GetComponent<TMP_Text>().text = speed.ToString();
