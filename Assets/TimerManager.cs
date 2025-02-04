@@ -35,8 +35,8 @@ public class TimerManager : MonoBehaviour
     [SerializeField]public List<ResponseData> responseRecords = new List<ResponseData>();
     private Coroutine timerCoroutine;
     private int currentIndex;
-    [SerializeField]private int[] duration=new int[] { 2,5,10};
-
+    [SerializeField]private int[] duration=new int[] {1,5,10};
+    [SerializeField]public ResultUIHandler resultUIHandler;
     private void Awake()
     {
         if (instance == null)
@@ -103,12 +103,7 @@ public class TimerManager : MonoBehaviour
     }
 
     // Calculate response time difference
-    public string CalculateResponseTime(float spawnTime, float responseTime)
-    {
-        float difference = responseTime - spawnTime;
-        return FormatTime(difference);
-    }
-
+    
     // Format time in mm:ss:ms format
     private string FormatTime(float time)
     {
@@ -120,7 +115,7 @@ public class TimerManager : MonoBehaviour
     }
     public void RecordResponse()
     {
-        CalculateResponseTime(startTime, responseTime);
+        
         if (!isRunning) return;
 
         ResponseData newRecord = new ResponseData(spawnTime, responseTime, userWasCorrect, openedeye,Answered);
@@ -166,11 +161,15 @@ public class TimerManager : MonoBehaviour
         int correctLeft = 0;
         int incorrectLeft = 0;
         int unansweredLeft = 0;
+        float totalResponseDurationLeft = 0f; // Variable to store the total response duration for the left eye
+        int totalResponsesLeft = 0; // Variable to store the number of responses recorded for the left eye
 
         int totalShownRight = 0;
         int correctRight = 0;
         int incorrectRight = 0;
         int unansweredRight = 0;
+        float totalResponseDurationRight = 0f; // Variable to store the total response duration for the right eye
+        int totalResponsesRight = 0; // Variable to store the number of responses recorded for the right eye
 
         foreach (ResponseData record in responseRecords)
         {
@@ -202,6 +201,9 @@ public class TimerManager : MonoBehaviour
                 {
                     unansweredLeft++;
                 }
+
+                totalResponseDurationLeft += record.responseDuration; // Add the response duration to the total for the left eye
+                totalResponsesLeft++; // Increment the number of responses recorded for the left eye
             }
             else if (record.OpenedEye == "R")
             {
@@ -217,13 +219,32 @@ public class TimerManager : MonoBehaviour
                 {
                     unansweredRight++;
                 }
+
+                totalResponseDurationRight += record.responseDuration; // Add the response duration to the total for the right eye
+                totalResponsesRight++; // Increment the number of responses recorded for the right eye
             }
         }
 
+        resultUIHandler.total.text = totalShown.ToString();
+        resultUIHandler.score.text = correctResponses.ToString();
+
         // Store in variables
         Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
+        resultUIHandler.FillGeneralStats((int)timerDuration, totalShown, correctResponses, incorrectResponses, unansweredResponses);
         Debug.Log($"Left Eye -> Total: {totalShownLeft}, Correct: {correctLeft}, Incorrect: {incorrectLeft}, Unanswered: {unansweredLeft}");
+        resultUIHandler.LeftEyeStats(totalShownLeft, correctLeft, incorrectLeft, unansweredLeft);
         Debug.Log($"Right Eye -> Total: {totalShownRight}, Correct: {correctRight}, Incorrect: {incorrectRight}, Unanswered: {unansweredRight}");
+        resultUIHandler.RightEyeStats(totalShownRight, correctRight, incorrectRight, unansweredRight);
+
+        // Calculate average response duration for both eyes
+        float averageResponseDurationLeft = totalResponseDurationLeft / totalResponsesLeft;
+        float averageResponseDurationRight = totalResponseDurationRight / totalResponsesRight;
+        resultUIHandler.RighEyeTimeStamps();
+        resultUIHandler.LeftEyeTimeStamps();
+        resultUIHandler.RighteyeAverageResponseTime.text=averageResponseDurationRight.ToString() + " Sec";
+        resultUIHandler.LefteyeAverageResponseTime.text=averageResponseDurationLeft.ToString()+" Sec";
+        
+        Debug.Log($"Average Response Duration - Left Eye: {averageResponseDurationLeft}s, Right Eye: {averageResponseDurationRight}s");
     }
 
 }

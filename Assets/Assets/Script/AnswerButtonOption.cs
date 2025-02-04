@@ -16,16 +16,20 @@ public class AnswerButtonOption : MonoBehaviour
         ColorUtility.TryParseHtmlString("#33333", out Color Button);
         GetComponent<Button>().image.color = Button;
         transform.GetChild(0).GetComponent<TMP_Text>().color = Text;
-        if(GameplayManager.instance.TutorialSemaphore==-1)
+        UIHandler.instance.playOneshotAnswerButton(IsCorrect);
+        if (GameplayManager.instance.TutorialSemaphore==-1)
         {
             TimerManager.instance.responseTime = TimerManager.instance.GetCurrentTime();
             TimerManager.instance.userWasCorrect = IsCorrect;
+            
             TimerManager.instance.openedeye = GameplayManager.instance.RightEyeBlock ? "L" : "R";
             TimerManager.instance.Answered=true;
         }
+        
         GameplayManager.instance.BuildingSpeed = GameplayManager.instance.SpeedValues[speedValue];
         GameplayManager.instance.OnSignBannerEnd(IsCorrect);
         VehicleSpeedHandler.instance.SetButtonEnable(false);
+        TimerManager.instance.RecordResponse();
     }
 
     // Start is called before the first frame update

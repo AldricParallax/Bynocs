@@ -38,8 +38,6 @@ public class GameplayManager : MonoBehaviour
        
     }
 
-
-
     void Start()
     {
         UIHandler.instance.UpdateButton(-1);
@@ -69,7 +67,15 @@ public class GameplayManager : MonoBehaviour
     public void BeginTutorial() {
 
         UIHandler.instance.updateLeftScreen(false);
-        StartCoroutine(TutorialLoop());
+        if(TutorialSemaphore !=-1)
+        {
+            StartCoroutine(TutorialLoop());
+        }
+        else if(TutorialSemaphore == -1)
+        {
+            StartGameCountDown();
+        }
+        
         
     }
 
@@ -84,7 +90,7 @@ public class GameplayManager : MonoBehaviour
             case 0:
                 //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(3f);
                 
                 if (targetObject != null) { Destroy(targetObject); }
                 yield return new WaitForSeconds(2);
@@ -184,16 +190,21 @@ public class GameplayManager : MonoBehaviour
     public IEnumerator GameCountdown()
     {
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[6]);
+        UIHandler.instance.playOneshotButton(UIHandler.instance.Countdown);
         yield return new WaitForSeconds(1);
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[7]);
+        UIHandler.instance.playOneshotButton(UIHandler.instance.Countdown);
         yield return new WaitForSeconds(1);
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[8]);
+        UIHandler.instance.playOneshotButton(UIHandler.instance.Countdown);
         yield return new WaitForSeconds(1);
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[9]);
+        UIHandler.instance.playOneshotButton(UIHandler.instance.Countdown);
         yield return new WaitForSeconds(1);
         UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[10]);
         UIHandler.instance.UpdateButton(1);
         UIHandler.instance.ButtonsList[1].transform.GetChild(0).gameObject.SetActive(false);
+        UIHandler.instance.GameplayMusic.Play();
         TimerManager.instance.StartTimer();
         Debug.Log("Game timer Started");
         ActualGameLoop();
@@ -219,11 +230,12 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
+            Result.SetActive(true);
             //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             TimerManager.instance.CalculateResponseStats();
             // Add Total Score
-            Result.SetActive(true);
+            
         }
     }
 
@@ -253,7 +265,7 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
-            TimerManager.instance.RecordResponse();
+            
 
             //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);

@@ -25,6 +25,14 @@ public class UIHandler : MonoBehaviour
     [SerializeField] GameObject prefabparent;
     [SerializeField] public TextMeshProUGUI[] SettingsText;
     public int bannertextFont=36;
+    public AudioSource SFX;
+    public AudioSource GameplayMusic;
+    [SerializeField] private AudioClip ButtonCLick;
+    [SerializeField] private AudioClip Correct;
+    [SerializeField] private AudioClip Wrong;
+    [SerializeField] private AudioClip Page;
+    [SerializeField] private AudioClip SpeedChange;
+    [SerializeField] public AudioClip Countdown;
     // Start is called before the first frame update
 
     private void Awake()
@@ -50,6 +58,7 @@ public class UIHandler : MonoBehaviour
 
     public void UpdateCenterScreen(Texture Value)
     {
+        SFX.PlayOneShot(Page);
         if(!Centralmat) Centralmat = GetComponent<MeshRenderer>().materials[1];
         Centralmat.SetTexture("_MainTex", Value);
         Centralmat.SetTexture("_EmissionMap", Value);
@@ -201,6 +210,8 @@ public class UIHandler : MonoBehaviour
         EyeToggle.instance.StartEyeFadeLoop(1, 0f, 1f, 1.5f); // Left Eye fades in & out
         EyeToggle.instance.StartEyeFadeLoop(0, 0f, 1f, 1.5f); // Right Eye fades in & out
         GameplayManager.instance.StopAllCoroutines();
+        TimerManager.instance.ResetTimer();
+        TimerManager.instance.responseRecords.Clear();
         //StopAllCoroutines();
         //StopCoroutine(GameplayManager.instance.TutorialLoop());
         //StopCoroutine(GameplayManager.instance.GameCountdown());
@@ -214,7 +225,7 @@ public class UIHandler : MonoBehaviour
         updateLeftScreen(true);
         VehicleSpeedHandler.instance.Canvas.SetActive(false);
         UpdateScreen(1);
-
+        GameplayMusic.Stop();
 
     }
     public void ScaleSetting(bool increase)
@@ -236,4 +247,22 @@ public class UIHandler : MonoBehaviour
             bannertextFont = 36;
         }
     }
+
+    public void playOneshotButton(AudioClip ButtonCLick)
+    {
+        SFX.PlayOneShot(ButtonCLick);
+    }
+    public void playOneshotAnswerButton(bool correct)
+    {
+        if(correct)
+        {
+            SFX.PlayOneShot(Correct);
+        }
+        else
+            {
+            SFX.PlayOneShot(Wrong);
+        }
+        
+    }
+    
 }
