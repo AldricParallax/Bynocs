@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,12 +27,12 @@ public class ResultUIHandler : MonoBehaviour
         // Update all "Total" text fields
         
         
-        total.GetComponent<TextMeshProUGUI>().text = total.ToString();
+        total.GetComponent<TextMeshProUGUI>().text = total.text;
         
 
         // Update all "Score" text fields
         
-            score.GetComponent<TextMeshProUGUI>().text = score.ToString();
+        score.GetComponent<TextMeshProUGUI>().text = score.text;
         
     }
     public void NextResultPanel(bool yes)
@@ -123,7 +124,7 @@ public class ResultUIHandler : MonoBehaviour
             go.transform.Find("No.").GetComponent<TextMeshProUGUI>().text = i.ToString();
             go.transform.Find("SpawnTime").GetComponent<TextMeshProUGUI>().text = FormatTime(record.spawnTime);
             go.transform.Find("ResponseTime").GetComponent<TextMeshProUGUI>().text = FormatTime(record.responseTime);
-            go.transform.Find("ResponseDuration").GetComponent<TextMeshProUGUI>().text = (record.responseDuration).ToString() + " Sec";
+            go.transform.Find("ResponseDuration").GetComponent<TextMeshProUGUI>().text = Math.Round(record.responseDuration,2).ToString() + " Sec";
         }
     }
     public void LeftEyeTimeStamps()
@@ -145,7 +146,7 @@ public class ResultUIHandler : MonoBehaviour
             go.transform.Find("No.").GetComponent<TextMeshProUGUI>().text = i.ToString();
             go.transform.Find("SpawnTime").GetComponent<TextMeshProUGUI>().text = FormatTime(record.spawnTime);
             go.transform.Find("ResponseTime").GetComponent<TextMeshProUGUI>().text = FormatTime(record.responseTime);
-            go.transform.Find("ResponseDuration").GetComponent<TextMeshProUGUI>().text = (record.responseDuration).ToString()+ " Sec";
+            go.transform.Find("ResponseDuration").GetComponent<TextMeshProUGUI>().text = Math.Round(record.responseDuration,2).ToString()+ " Sec";
         }
     }
 }

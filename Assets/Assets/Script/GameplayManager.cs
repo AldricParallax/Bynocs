@@ -47,6 +47,10 @@ public class GameplayManager : MonoBehaviour
         endpoint = GameObject.Find("SignPoint").transform;
         //StartLoc.position = new Vector3(-767, 0.692149878f, -41.6f);
     }
+    public void ResetTutorial()
+    {
+       TutorialSemaphore = 0;
+    }
 
     private void Update()
     {

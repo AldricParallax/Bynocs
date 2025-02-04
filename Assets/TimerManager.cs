@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -241,8 +242,8 @@ public class TimerManager : MonoBehaviour
         float averageResponseDurationRight = totalResponseDurationRight / totalResponsesRight;
         resultUIHandler.RighEyeTimeStamps();
         resultUIHandler.LeftEyeTimeStamps();
-        resultUIHandler.RighteyeAverageResponseTime.text=averageResponseDurationRight.ToString() + " Sec";
-        resultUIHandler.LefteyeAverageResponseTime.text=averageResponseDurationLeft.ToString()+" Sec";
+        resultUIHandler.RighteyeAverageResponseTime.text= Math.Round(averageResponseDurationRight, 2).ToString() + " Sec"; 
+        resultUIHandler.LefteyeAverageResponseTime.text=Math.Round(averageResponseDurationLeft,2).ToString()+" Sec";
         
         Debug.Log($"Average Response Duration - Left Eye: {averageResponseDurationLeft}s, Right Eye: {averageResponseDurationRight}s");
     }
