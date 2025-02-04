@@ -1731,6 +1731,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6044439479372744315}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!82 &7977469389281305502
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5270,7 +5282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &220572524128204157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13956,8 +13968,8 @@ MonoBehaviour:
     type: 3}
   RighteyeAverageResponseTime: {fileID: 5798926984534738381}
   LefteyeAverageResponseTime: {fileID: 8951369969286894181}
-  total: {fileID: 0}
-  score: {fileID: 0}
+  total: {fileID: 204614792027703723}
+  score: {fileID: 2867501738115945581}
 --- !u!1 &6059504057065629849
 GameObject:
   m_ObjectHideFlags: 0
@@ -17754,7 +17766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2080819828737634072
 RectTransform:
   m_ObjectHideFlags: 0
