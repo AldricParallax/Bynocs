@@ -12,6 +12,7 @@ public class AnswerButtonOption : MonoBehaviour
 
     public void OnClickfunc()
     {
+        Debug.Log(gameObject.name+" Clicked");
         ColorUtility.TryParseHtmlString("#99999", out Color Text);
         ColorUtility.TryParseHtmlString("#33333", out Color Button);
         GetComponent<Button>().image.color = Button;

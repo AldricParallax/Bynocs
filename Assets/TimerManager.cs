@@ -89,7 +89,7 @@ public class TimerManager : MonoBehaviour
     {
         while (isRunning)
         {
-            Debug.Log("Current time: " + FormatTime(GetCurrentTime()));
+            //Debug.Log("Current time: " + FormatTime(GetCurrentTime()));
 
             if (timerDuration*60 > 0 && Time.time - startTime >= timerDuration*60)
             {
@@ -131,13 +131,12 @@ public class TimerManager : MonoBehaviour
         return responseRecords;
     }
 
-    // Debug Log all recorded data
+    // //Debug Log all recorded data
     public void PrintAllRecords()
     {
         foreach (ResponseData record in responseRecords)
         {
-            Debug.Log($"Spawn: {record.spawnTime}, Response: {record.responseTime}, Duration: {record.responseDuration}s, " +
-                      $"Correct: {record.isCorrect}, Opened Eye: {record.OpenedEye}");
+            //Debug.Log($"Spawn: {record.spawnTime}, Response: {record.responseTime}, Duration: {record.responseDuration}s, " +$"Correct: {record.isCorrect}, Opened Eye: {record.OpenedEye}");
         }
     }
     public void CycleTimeValue(bool cycleUp)
@@ -230,11 +229,11 @@ public class TimerManager : MonoBehaviour
         resultUIHandler.score.text = correctResponses.ToString();
 
         // Store in variables
-        Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
+        //Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
         resultUIHandler.FillGeneralStats((int)timerDuration, totalShown, correctResponses, incorrectResponses, unansweredResponses);
-        Debug.Log($"Left Eye -> Total: {totalShownLeft}, Correct: {correctLeft}, Incorrect: {incorrectLeft}, Unanswered: {unansweredLeft}");
+        //Debug.Log($"Left Eye -> Total: {totalShownLeft}, Correct: {correctLeft}, Incorrect: {incorrectLeft}, Unanswered: {unansweredLeft}");
         resultUIHandler.LeftEyeStats(totalShownLeft, correctLeft, incorrectLeft, unansweredLeft);
-        Debug.Log($"Right Eye -> Total: {totalShownRight}, Correct: {correctRight}, Incorrect: {incorrectRight}, Unanswered: {unansweredRight}");
+        //Debug.Log($"Right Eye -> Total: {totalShownRight}, Correct: {correctRight}, Incorrect: {incorrectRight}, Unanswered: {unansweredRight}");
         resultUIHandler.RightEyeStats(totalShownRight, correctRight, incorrectRight, unansweredRight);
 
         // Calculate average response duration for both eyes
@@ -245,7 +244,7 @@ public class TimerManager : MonoBehaviour
         resultUIHandler.RighteyeAverageResponseTime.text= Math.Round(averageResponseDurationRight, 2).ToString() + " Sec"; 
         resultUIHandler.LefteyeAverageResponseTime.text=Math.Round(averageResponseDurationLeft,2).ToString()+" Sec";
         
-        Debug.Log($"Average Response Duration - Left Eye: {averageResponseDurationLeft}s, Right Eye: {averageResponseDurationRight}s");
+        //Debug.Log($"Average Response Duration - Left Eye: {averageResponseDurationLeft}s, Right Eye: {averageResponseDurationRight}s");
     }
 
 }

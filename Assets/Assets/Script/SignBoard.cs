@@ -6,7 +6,7 @@ public class SignBoard : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed; // Speed at which the road moves
     [SerializeField] Transform endpoint;
-    [SerializeField] Transform RearCarpoint;
+    [SerializeField] public Transform RearCarpoint;
     float fillProgress = 1f;
     public TextMeshPro speedText;
     // Event to notify when the signboard exits
@@ -16,8 +16,8 @@ public class SignBoard : MonoBehaviour
     private void Start()
     {
         speedText.fontSize=UIHandler.instance.bannertextFont;
-        endpoint = GameObject.Find("SignPoint").transform;
-        RearCarpoint = GameObject.Find("RearPoint").transform;
+        //endpoint = GameObject.Find("SignPoint").transform;
+        //RearCarpoint = GameObject.Find("RearPoint").transform;
 
         // Start moving down by default
         MoveDown();

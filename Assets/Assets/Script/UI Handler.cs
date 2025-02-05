@@ -159,13 +159,10 @@ public class UIHandler : MonoBehaviour
             Fill.fillAmount = GameplayManager.instance.Signbanner ? 1f - FillProgress : 0f;
             
         }
-        // Check if FillProgress is approximately 1 (with a small tolerance)
-        //float tolerance = 0.00002f;
-        // Trigger the event when FillProgress drops below the threshold
-        if (!hasInvoked && FillProgress <= 0.05f)
+        
+        if (!hasInvoked && FillProgress <= 0.01f)
         {
-            Debug.Log("Invoking event, FillProgress = " + FillProgress);
-            OnSignBoardExit?.Invoke();
+            //UIHandler.instance.playOneshotAnswerButton(false);
             hasInvoked = true;
         }
     }

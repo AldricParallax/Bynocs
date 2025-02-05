@@ -16,6 +16,7 @@ public class GameplayManager : MonoBehaviour
     public int[] ActualSpeedlist = new int[] { 10, 15, 20, 25, 30 };
     Transform StartLoc;
     [SerializeField] Transform endpoint;
+
     public Dictionary<int, int> SpeedValues = new Dictionary<int, int>{
         { 25, 10 },
         { 40, 15 },
@@ -29,6 +30,7 @@ public class GameplayManager : MonoBehaviour
     public TMPro.TMP_Text ResultText;
     public TMPro.TMP_Text SpeedMeter;
     public KeyValuePair<int, int> selectedpair= new KeyValuePair<int, int>(0,0);
+    bool tutorialBAnner = false;
     private void Awake()
     {
         if (instance == null)
@@ -50,8 +52,18 @@ public class GameplayManager : MonoBehaviour
     public void ResetTutorial()
     {
        TutorialSemaphore = 0;
+        tutorialBAnner = false;
     }
-
+    public void skip()
+    {
+        StopAllCoroutines();
+        if (Signbanner) { Destroy(Signbanner.gameObject); }
+        TutorialSemaphore = -1;
+        UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[5]);
+        VehicleSpeedHandler.instance.Canvas.SetActive(false);
+        UIHandler.instance.UpdateButton(2);
+        
+    }
     private void Update()
     {
         foreach (var item in SpeedValues)
@@ -69,18 +81,15 @@ public class GameplayManager : MonoBehaviour
     }
 
     public void BeginTutorial() {
-
+        if (!tutorialBAnner) {
+            GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position, new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
+            obj.gameObject.name = "Tutorial";
+            tutorialBAnner = true;
+        }
+        
         UIHandler.instance.updateLeftScreen(false);
-        if(TutorialSemaphore !=-1)
-        {
-            StartCoroutine(TutorialLoop());
-        }
-        else if(TutorialSemaphore == -1)
-        {
-            StartGameCountDown();
-        }
         
-        
+        StartCoroutine(TutorialLoop());
     }
 
     public IEnumerator TutorialLoop()
@@ -88,16 +97,16 @@ public class GameplayManager : MonoBehaviour
         
         //Debug.LogError(TutorialSemaphore);
         VehicleSpeedHandler.instance.IsGivingAnswerAllowed = true;
-        GameObject targetObject = GameObject.Find("Sign Board Ui");
+        GameObject targetObject = GameObject.Find("Tutorial");
+        //Debug.Log(targetObject.gameObject.name + "Found");
         switch (TutorialSemaphore)
         {
             case 0:
                 //EyeToggle.instance.UpdateEye(-1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
-                yield return new WaitForSeconds(3f);
-                
+                yield return new WaitForSeconds(10);
                 if (targetObject != null) { Destroy(targetObject); }
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
                 VehicleSpeedHandler.instance.Canvas.SetActive(true);
                 SpawnBridge();
@@ -154,15 +163,15 @@ public class GameplayManager : MonoBehaviour
         }
         if (!newArr.Contains(selectedpair.Key))
             newArr[UnityEngine.Random.Range(0, newArr.Count)] = value;
-        Debug.Log(newArr.ToString());
+        //Debug.Log(newArr.ToString());
         return newArr;
 
     }
 
     public void SpawnBridge()
     {
+        Debug.Log("Bridge Spawned");
 
-        
         if (Signbanner) {  Destroy(Signbanner.gameObject);  }
         UIHandler.instance.FillProgress = 1;
         UIHandler.instance.hasInvoked = false;
@@ -174,13 +183,11 @@ public class GameplayManager : MonoBehaviour
         Signbanner = obj.GetComponent<SignBoard>();
         Signbanner.SetSpeed(selectedpair.Key);
         VehicleSpeedHandler.instance.SetButtonData(GetRandomFourElementList(selectedpair.Key));
-        Debug.Log("Subscribed to SignBoard Event");
+        
     }
-    public float returntimebetweenspawnandfinish()
+    public float returntimebetweenspawnandfinish(Transform PointA, Transform pointB)
     {
-        Vector3 startPosition = StartLoc.position; // Assuming StartLoc is a valid position
-        Vector3 finishPosition =endpoint.position /* Provide the finish position here */;
-        float distance = Vector3.Distance(startPosition, finishPosition);
+        float distance = Vector3.Distance(PointA.position, pointB.position);
         float time = distance / BuildingSpeed;
         return time;
     }
@@ -217,8 +224,8 @@ public class GameplayManager : MonoBehaviour
 
     void ActualGameLoop()
     {
-        Debug.Log("Time remaining: " + TimerManager.instance.gettimeremaining() + " Time Between Spawn and finsh: " + returntimebetweenspawnandfinish());
-        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish())
+        Debug.Log("Time remaining: " + TimerManager.instance.gettimeremaining() + " Time Between Spawn and finsh: " + returntimebetweenspawnandfinish(StartLoc, endpoint));
+        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish(StartLoc,endpoint))
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
             TimerManager.instance.Answered=false;
@@ -270,12 +277,14 @@ public class GameplayManager : MonoBehaviour
         else
         {
             
-
+            if(TimerManager.instance.Answered == false)
+            {
+                TimerManager.instance.RecordResponse();
+            }
             //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 1f));
-            
-            
+       
         }
 
 
