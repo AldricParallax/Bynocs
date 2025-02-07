@@ -14,9 +14,9 @@ public class PrefabScript : MonoBehaviour
     {
         // Start moving down by default
         MoveDown();
-
+        GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         // Get all child rigidbodies
-        
+
     }
 
     private void FixedUpdate()

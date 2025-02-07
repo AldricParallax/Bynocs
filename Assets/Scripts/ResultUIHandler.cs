@@ -149,4 +149,15 @@ public class ResultUIHandler : MonoBehaviour
             go.transform.Find("ResponseDuration").GetComponent<TextMeshProUGUI>().text = Math.Round(record.responseDuration,2).ToString()+ " Sec";
         }
     }
+    public void clearUI()
+    {
+        foreach(Transform child in RCOntent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach(Transform child in LContent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }

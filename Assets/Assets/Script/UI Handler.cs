@@ -209,6 +209,7 @@ public class UIHandler : MonoBehaviour
         GameplayManager.instance.StopAllCoroutines();
         TimerManager.instance.ResetTimer();
         TimerManager.instance.responseRecords.Clear();
+        TimerManager.instance.resultUIHandler.clearUI();
         //StopAllCoroutines();
         //StopCoroutine(GameplayManager.instance.TutorialLoop());
         //StopCoroutine(GameplayManager.instance.GameCountdown());

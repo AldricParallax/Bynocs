@@ -276,11 +276,12 @@ public class GameplayManager : MonoBehaviour
 
         else
         {
-            
-            if(TimerManager.instance.Answered == false)
+            if (TimerManager.instance.Answered == false)
             {
+                TimerManager.instance.responseTime= TimerManager.instance.GetCurrentTime();
                 TimerManager.instance.RecordResponse();
             }
+
             //EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             StartCoroutine(ExecuteWithDelay(()=>ActualGameLoop(), 1f));
