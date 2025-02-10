@@ -18,6 +18,7 @@ public class ResultUIHandler : MonoBehaviour
     public TextMeshProUGUI LefteyeAverageResponseTime;
     public TextMeshProUGUI total;
     public TextMeshProUGUI score;
+    public TextMeshProUGUI totalgameduration;
     private void Start()
     {
         UpdateScores();
@@ -66,34 +67,45 @@ public class ResultUIHandler : MonoBehaviour
         resultPanel[currentIndex].SetActive(true);
     }
 
-    public void FillGeneralStats(int gameduration,int totalShown,int correctResponses,int incorrectResponses,int unansweredResponses)
+    public void FillSignboardsShown(int gameduration,int totalShown,int totalShownR,int totalShownL)
     {
         // Fill general stats
-        Stats[0].transform.Find("TotalGameDuration").GetComponent<TextMeshProUGUI>().text = gameduration.ToString() + " Mins";
+        totalgameduration.text = gameduration.ToString() + " Mins";
         Stats[0].transform.Find("Signboards_Shown").GetComponent<TextMeshProUGUI>().text = totalShown.ToString();
-        Stats[0].transform.Find("Correct_Response").GetComponent<TextMeshProUGUI>().text = correctResponses.ToString();
-        Stats[0].transform.Find("Incorrect_Responses").GetComponent<TextMeshProUGUI>().text = incorrectResponses.ToString();
-        Stats[0].transform.Find("Unanswered_Responses").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
+        Stats[0].transform.Find("Signboards_ShownR").GetComponent<TextMeshProUGUI>().text = totalShownR.ToString();
+        Stats[0].transform.Find("Signboards_ShownL").GetComponent<TextMeshProUGUI>().text = totalShownL.ToString();
+        
 
     }
-    public void LeftEyeStats(int totalShown,int correctResponses,int incorrectResponses,int unansweredResponses)
+    public void FillCorrectResponses(int correctResponses,int CorrectResponsesR,int CorrectResponsesL)
     {
         // Fill general stats
-        
-        Stats[1].transform.Find("Signboards_Shown").GetComponent<TextMeshProUGUI>().text = totalShown.ToString();
         Stats[1].transform.Find("Correct_Response").GetComponent<TextMeshProUGUI>().text = correctResponses.ToString();
-        Stats[1].transform.Find("Incorrect_Responses").GetComponent<TextMeshProUGUI>().text = incorrectResponses.ToString();
-        Stats[1].transform.Find("Unanswered_Responses").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
-
+        Stats[1].transform.Find("Correct_ResponseR").GetComponent<TextMeshProUGUI>().text = CorrectResponsesR.ToString();
+        Stats[1].transform.Find("Correct_ResponseL").GetComponent<TextMeshProUGUI>().text = CorrectResponsesL.ToString();
     }
-    public void RightEyeStats(int totalShown,int correctResponses,int incorrectResponses,int unansweredResponses)
+    public void FillIncorrectResponses(int incorrectResponses,int incorrectResponsesR,int incorrectResponsesL)
     {
         // Fill general stats
-        
-        Stats[2].transform.Find("Signboards_Shown").GetComponent<TextMeshProUGUI>().text = totalShown.ToString();
-        Stats[2].transform.Find("Correct_Response").GetComponent<TextMeshProUGUI>().text = correctResponses.ToString();
         Stats[2].transform.Find("Incorrect_Responses").GetComponent<TextMeshProUGUI>().text = incorrectResponses.ToString();
-        Stats[2].transform.Find("Unanswered_Responses").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
+        Stats[2].transform.Find("Incorrect_ResponsesR").GetComponent<TextMeshProUGUI>().text = incorrectResponsesR.ToString();
+        Stats[2].transform.Find("Incorrect_ResponsesL").GetComponent<TextMeshProUGUI>().text = incorrectResponsesL.ToString();
+
+    }
+    public void FillUnansweredResponses(int unansweredResponses, int unansweredResponsesR, int unansweredResponsesL)
+    {
+        // Fill general stats
+        Stats[3].transform.Find("Unanswered_Responses").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
+        Stats[3].transform.Find("Unanswered_ResponsesR").GetComponent<TextMeshProUGUI>().text = unansweredResponsesR.ToString();
+        Stats[3].transform.Find("Unanswered_ResponsesL").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
+
+    }
+    public void FillAverageTime(int TotalAverage,int AvgR,int AvgL)
+    {
+        // Fill general stats
+        Stats[4].transform.Find("Avg_Response").GetComponent<TextMeshProUGUI>().text = TotalAverage.ToString();
+        Stats[4].transform.Find("Avg_ResponseR").GetComponent<TextMeshProUGUI>().text = AvgR.ToString();
+        Stats[4].transform.Find("Avg_ResponseL").GetComponent<TextMeshProUGUI>().text = AvgL.ToString();
 
     }
     private string FormatTime(float time)

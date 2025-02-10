@@ -230,15 +230,19 @@ public class TimerManager : MonoBehaviour
 
         // Store in variables
         //Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
-        resultUIHandler.FillGeneralStats((int)timerDuration, totalShown, correctResponses, incorrectResponses, unansweredResponses);
+        resultUIHandler.FillSignboardsShown((int)timerDuration, totalShown, totalShownRight,totalShownLeft);
         //Debug.Log($"Left Eye -> Total: {totalShownLeft}, Correct: {correctLeft}, Incorrect: {incorrectLeft}, Unanswered: {unansweredLeft}");
-        resultUIHandler.LeftEyeStats(totalShownLeft, correctLeft, incorrectLeft, unansweredLeft);
+        resultUIHandler.FillCorrectResponses(correctResponses, correctRight, correctLeft);
         //Debug.Log($"Right Eye -> Total: {totalShownRight}, Correct: {correctRight}, Incorrect: {incorrectRight}, Unanswered: {unansweredRight}");
-        resultUIHandler.RightEyeStats(totalShownRight, correctRight, incorrectRight, unansweredRight);
+        resultUIHandler.FillIncorrectResponses(incorrectResponses, incorrectRight, incorrectLeft);
+        resultUIHandler.FillUnansweredResponses(unansweredResponses, unansweredRight, unansweredLeft);
+        
 
         // Calculate average response duration for both eyes
         float averageResponseDurationLeft = totalResponseDurationLeft / totalResponsesLeft;
         float averageResponseDurationRight = totalResponseDurationRight / totalResponsesRight;
+        float averageResponseDurationTotal = (averageResponseDurationLeft+averageResponseDurationRight)/2; 
+        resultUIHandler.FillAverageTime((int)averageResponseDurationTotal, (int)averageResponseDurationRight, (int)averageResponseDurationLeft);
         resultUIHandler.RighEyeTimeStamps();
         resultUIHandler.LeftEyeTimeStamps();
         resultUIHandler.RighteyeAverageResponseTime.text= Math.Round(averageResponseDurationRight, 2).ToString() + " Sec"; 

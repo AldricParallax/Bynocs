@@ -5405,24 +5405,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 37727552}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2082800368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4562526378457630106, guid: 856e4dfe521570a459143cf7db8b8969,
-    type: 3}
-  m_PrefabInstance: {fileID: 1826379152681404573}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2082800371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082800368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68773b8120aac67449ee1caec967ceff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2114093999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6168249299701753707, guid: a05a88b5474c2954791d834fde7897d6,
@@ -5889,6 +5871,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 118968600}
+    - target: {fileID: 6583396509499844998, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_HorizontalScrollbar
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5927,11 +5914,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4562526378457630106, guid: 856e4dfe521570a459143cf7db8b8969,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2082800371}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 856e4dfe521570a459143cf7db8b8969, type: 3}
 --- !u!1001 &1946696720672641606
 PrefabInstance:

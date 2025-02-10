@@ -14,7 +14,9 @@ public class PrefabScript : MonoBehaviour
     {
         // Start moving down by default
         MoveDown();
-        GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        
+        
         // Get all child rigidbodies
 
     }
@@ -41,8 +43,8 @@ public class PrefabScript : MonoBehaviour
         // Freeze position of child rigidbodies after 5 seconds
         if (Time.time >= 5f)
         {
-            GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-            GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+            
         }
     }
 

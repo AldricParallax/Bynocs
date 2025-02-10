@@ -10,7 +10,7 @@ public class TextFileGenerator : MonoBehaviour
     void Start()
     {
  
-        filePath = ("Assets/Scripts/EyeTrackingDummyLog.txt");
+        filePath = "Assets/Scripts/EyeTrackingDummyLog.txt";
         Debug.Log("Logging eye tracking data to: " + filePath);
     }
 
@@ -37,6 +37,6 @@ public class TextFileGenerator : MonoBehaviour
                          $"{gazeOriginLeft}, {gazeDirectionLeft}, {gazeOriginRight}, {gazeDirectionRight}\n";
 
         // Append data to file
-        File.AppendAllText(filePath, logData);
+        File.AppendAllText(filePath,logData);
     }
 }
