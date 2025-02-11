@@ -3131,6 +3131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237546797}
+  - component: {fileID: 1237546798}
   m_Layer: 0
   m_Name: Scene Prefabs
   m_TagString: Untagged
@@ -3217,6 +3218,19 @@ Transform:
   - {fileID: 578700652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237546798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237546796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696ad712e577a174c925bc88cf83b9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motionSicknessEnabled: 0
 --- !u!1001 &1245300958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5871,6 +5885,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 118968600}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1826379152681404575}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 6583396509499844998, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_HorizontalScrollbar
@@ -5916,6 +5940,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 856e4dfe521570a459143cf7db8b8969, type: 3}
+--- !u!1 &1826379152681404575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 155098698499665230, guid: 856e4dfe521570a459143cf7db8b8969,
+    type: 3}
+  m_PrefabInstance: {fileID: 1826379152681404573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1946696720672641606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6401,6 +6431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 61.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572551900148795786, guid: a05a88b5474c2954791d834fde7897d6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

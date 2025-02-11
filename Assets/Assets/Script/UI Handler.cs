@@ -185,12 +185,12 @@ public class UIHandler : MonoBehaviour
         if (enable)
         {
 
-            prefabparent.SetActive(false);
+            MotionSicknessBool.instance.motionSicknessEnabled = true;
             SettingsText[2].text = "Enabled";
         }
         else
         {
-            prefabparent.SetActive(true);
+            MotionSicknessBool.instance.motionSicknessEnabled = false;
             SettingsText[2].text = "Disabled";
         }
     }

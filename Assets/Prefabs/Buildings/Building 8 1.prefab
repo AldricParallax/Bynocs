@@ -215,7 +215,11 @@ MonoBehaviour:
   moveSpeed: 40
   endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
+  meshlist:
+  - {fileID: 7692459228029615103}
+  - {fileID: 5993476102824376477}
   isMovingUp: 1
+  Isvisible: 0
 --- !u!1 &8691580558915773822
 GameObject:
   m_ObjectHideFlags: 0

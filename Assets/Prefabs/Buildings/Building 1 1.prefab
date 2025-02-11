@@ -48,7 +48,10 @@ MonoBehaviour:
   moveSpeed: 40
   endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
+  meshlist:
+  - {fileID: 8572551900148795786}
   isMovingUp: 1
+  Isvisible: 0
 --- !u!1001 &7004864513859818766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -201,3 +204,9 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
+--- !u!23 &8572551900148795786 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: ab18f690468084d4997bdc7343e2aa58,
+    type: 3}
+  m_PrefabInstance: {fileID: 7004864513859818766}
+  m_PrefabAsset: {fileID: 0}

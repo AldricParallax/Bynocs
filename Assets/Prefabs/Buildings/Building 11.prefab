@@ -48,7 +48,10 @@ MonoBehaviour:
   moveSpeed: 40
   endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
+  meshlist:
+  - {fileID: 1460262394555562437}
   isMovingUp: 1
+  Isvisible: 0
 --- !u!1001 &252889087046509889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -201,3 +204,9 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3649815965519877917, guid: 3c5752ea03e466340b04dff2a5f82418, type: 3}
+--- !u!23 &1460262394555562437 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 3c5752ea03e466340b04dff2a5f82418,
+    type: 3}
+  m_PrefabInstance: {fileID: 252889087046509889}
+  m_PrefabAsset: {fileID: 0}

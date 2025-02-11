@@ -48,7 +48,10 @@ MonoBehaviour:
   moveSpeed: 40
   endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
+  meshlist:
+  - {fileID: 5682077709057901284}
   isMovingUp: 1
+  Isvisible: 0
 --- !u!1001 &6420829269436227168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,6 +143,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5532265929201779469}
   m_SourcePrefab: {fileID: 100100000, guid: 8bc3d4547b4ff434b865f3a258aa314a, type: 3}
+--- !u!23 &5682077709057901284 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8bc3d4547b4ff434b865f3a258aa314a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6420829269436227168}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6186318484031431473 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bc3d4547b4ff434b865f3a258aa314a,

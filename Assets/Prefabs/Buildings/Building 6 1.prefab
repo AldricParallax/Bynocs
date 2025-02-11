@@ -183,4 +183,7 @@ MonoBehaviour:
   moveSpeed: 40
   endpoint: {fileID: 3199231199792465971, guid: aa1c3e7632c2fd542855a618acea41f4,
     type: 3}
+  meshlist:
+  - {fileID: 7821675721500540821}
   isMovingUp: 1
+  Isvisible: 0
