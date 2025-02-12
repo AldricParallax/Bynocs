@@ -180,21 +180,13 @@ public class UIHandler : MonoBehaviour
         Settings_canvas.SetActive(false);
         UpdateCenterScreen(IntroImages[2]);
     }
-    public void MotionSicknessAssist(bool enable)
+    public void MotionSicknessAssist()
     {
-        if (enable)
-        {
-
-            MotionSicknessBool.instance.motionSicknessEnabled = true;
-            SettingsText[2].text = "Enabled";
-        }
-        else
-        {
-            MotionSicknessBool.instance.motionSicknessEnabled = false;
-            SettingsText[2].text = "Disabled";
-        }
+        var instance = MotionSicknessBool.instance;
+        instance.motionSicknessEnabled = !instance.motionSicknessEnabled;
+        SettingsText[2].text = instance.motionSicknessEnabled ? "Enabled" : "Disabled";
     }
-   
+
     void SetShaderAlpha(float alpha)
     {
         // Replace "YourShaderName" with the actual name of your shader
@@ -215,36 +207,32 @@ public class UIHandler : MonoBehaviour
         //StopCoroutine(GameplayManager.instance.GameCountdown());
         GameObject targetObject = GameObject.Find("Sign Board Ui");
         if(targetObject != null) { Destroy(targetObject); }
+        if (GameplayManager.instance.tutorialBAnner)
+        {
+            targetObject = GameObject.Find("Tutorial");
+            if (targetObject != null) { Destroy(targetObject); }
+        }
         if (GameplayManager.instance.Signbanner != null)
         {
             Destroy(GameplayManager.instance.Signbanner.gameObject);
         }
-       
+       GameplayManager.instance.BuildingSpeed= GameplayManager.instance.SpeedValues[60];
         updateLeftScreen(true);
         VehicleSpeedHandler.instance.Canvas.SetActive(false);
         UpdateScreen(1);
         GameplayMusic.Stop();
 
     }
-    public void ScaleSetting(bool increase)
-    {
-        if (increase)
-        {
-            ////GameplayManager.instance.SignbannerPrefab.transform.localScale= new Vector3(0.00593353016f, 0.00720383693f, 0.00593353016f);
-            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.fontSize=50;
-            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.alignment=TextAlignmentOptions.Top;
-            SettingsText[1].text = "Large";
-            bannertextFont = 50;
-        }
-        else
-        {
-            //GameplayManager.instance.SignbannerPrefab.transform.localScale = new Vector3(0.00593353016f, 0.00702470634f, 0.00593353016f);
-            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.fontSize = 36;
-            //GameplayManager.instance.SignbannerPrefab.GetComponent<SignBoard>().speedText.alignment = TextAlignmentOptions.Midline;
-            SettingsText[1].text = "Standard";
-            bannertextFont = 36;
-        }
-    }
+    private readonly string[] scaleOptions = { "Standard", "Large" };
+private readonly int[] fontSizes = { 36, 50 };
+private int currentScaleIndex = 0;
+
+public void ScaleSetting()
+{
+    currentScaleIndex = (currentScaleIndex + 1) % scaleOptions.Length;
+    SettingsText[1].text = scaleOptions[currentScaleIndex];
+    bannertextFont = fontSizes[currentScaleIndex];
+}
 
     public void playOneshotButton(AudioClip ButtonCLick)
     {
