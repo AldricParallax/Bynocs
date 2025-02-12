@@ -171,7 +171,7 @@ public class UIHandler : MonoBehaviour
         
         UpdateCenterScreen(Settings_Screen.mainTexture);
         Settings_canvas.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
     }
     public void DisableSettings()
