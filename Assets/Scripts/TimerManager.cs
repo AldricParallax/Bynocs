@@ -36,7 +36,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField]public List<ResponseData> responseRecords = new List<ResponseData>();
     private Coroutine timerCoroutine;
     private int currentIndex;
-    [SerializeField]private int[] duration=new int[] {3,5,10};
+    [SerializeField]private int[] duration=new int[] {1,5,10};
     [SerializeField]public ResultUIHandler resultUIHandler;
     private void Awake()
     {

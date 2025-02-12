@@ -52,7 +52,7 @@ public class EnvironmentSpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("Bridge random value: " + randomValue);
+                //Debug.Log("Bridge random value: " + randomValue);
                 yield return new WaitForSeconds(1);
                 SpawnFlyover();
                 yield return new WaitForSeconds(1);

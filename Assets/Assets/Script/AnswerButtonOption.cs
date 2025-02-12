@@ -23,7 +23,7 @@ public class AnswerButtonOption : MonoBehaviour
             TimerManager.instance.responseTime = TimerManager.instance.GetCurrentTime();
             TimerManager.instance.userWasCorrect = IsCorrect;
             
-            TimerManager.instance.openedeye = GameplayManager.instance.RightEyeBlock ? "L" : "R";
+            TimerManager.instance.openedeye = GameplayManager.instance.RightEyeBlock ? "R" : "L";
             TimerManager.instance.Answered=true;
         }
         
@@ -31,6 +31,7 @@ public class AnswerButtonOption : MonoBehaviour
         GameplayManager.instance.OnSignBannerEnd(IsCorrect);
         VehicleSpeedHandler.instance.SetButtonEnable(false);
         TimerManager.instance.RecordResponse();
+        GameplayManager.instance.RightEyeBlock = !GameplayManager.instance.RightEyeBlock;
     }
 
     // Start is called before the first frame update

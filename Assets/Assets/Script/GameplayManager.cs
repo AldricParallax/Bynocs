@@ -118,6 +118,7 @@ public class GameplayManager : MonoBehaviour
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[2]); // Start The Challenge
                 yield return new WaitForSeconds(2);
                 EyeToggle.instance.UpdateEye(0);
+                Debug.Log("Right eye is blocked, left eye is visible.");
                 yield return new WaitForSeconds(2);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[3]);
                 SpawnBridge();
@@ -128,6 +129,7 @@ public class GameplayManager : MonoBehaviour
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[4]); // Start The Challenge
                 yield return new WaitForSeconds(2);
                 EyeToggle.instance.UpdateEye(1);
+                Debug.Log("Left eye is blocked, Right eye is visible.");
                 yield return new WaitForSeconds(2);
                 SpawnBridge();
                 break;
@@ -171,7 +173,7 @@ public class GameplayManager : MonoBehaviour
 
     public void SpawnBridge()
     {
-        Debug.Log("Bridge Spawned");
+        //Debug.Log("Bridge Spawned");
 
         if (Signbanner) {  Destroy(Signbanner.gameObject);  }
         UIHandler.instance.FillProgress = 1;
@@ -218,7 +220,7 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.ButtonsList[1].transform.GetChild(0).gameObject.SetActive(false);
         UIHandler.instance.GameplayMusic.Play();
         TimerManager.instance.StartTimer();
-        Debug.Log("Game timer Started");
+        //Debug.Log("Game timer Started");
         ActualGameLoop();
     }
 
@@ -226,20 +228,23 @@ public class GameplayManager : MonoBehaviour
     void ActualGameLoop()
     {
         Debug.Log("Time remaining: " + TimerManager.instance.gettimeremaining() + " Time Between Spawn and finsh: " + returntimebetweenspawnandfinish(StartLoc, endpoint));
-        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish(StartLoc,endpoint))
+        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish(StartLoc, endpoint))
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
-            TimerManager.instance.Answered=false;
+            TimerManager.instance.Answered = false;
             EyeToggle.instance.UpdateEye(RightEyeBlock ? 1 : 0);
-            RightEyeBlock = !RightEyeBlock;
-            
-           
-            
+            TimerManager.instance.openedeye = RightEyeBlock ? "R" : "L";
+            if (RightEyeBlock)
+            {
+                Debug.Log("Left eye is blocked, Right eye is visible.");
+            }
+            else
+            {
+                Debug.Log("Right eye is blocked, Left eye is visible.");
+            }
             SpawnBridge();
             
-            
         }
-
         else
         {
             Result.SetActive(true);
@@ -247,7 +252,7 @@ public class GameplayManager : MonoBehaviour
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             TimerManager.instance.CalculateResponseStats();
             // Add Total Score
-            
+
         }
     }
 
