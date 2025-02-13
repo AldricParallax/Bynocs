@@ -37,7 +37,7 @@ public class EnvironmentSpawner : MonoBehaviour
         {
             float randomValue = Random.value;
 
-            if (randomValue < 0.97f)
+            if (randomValue < 0.98888f)
             {
                 // Equal chance to spawn buildings on left or right
                 float randomValue2 = Random.value;
