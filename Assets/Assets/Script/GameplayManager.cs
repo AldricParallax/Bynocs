@@ -85,7 +85,7 @@ public class GameplayManager : MonoBehaviour
             GameObject obj = Instantiate(SignbannerPrefab, StartLoc.position, new Quaternion(-0.707106829f, 0, 0, 0.707106829f));
             obj.gameObject.name = "Tutorial";
             
-            tutorialBAnner = true;
+            
         }
         
         UIHandler.instance.updateLeftScreen(false);
@@ -104,8 +104,12 @@ public class GameplayManager : MonoBehaviour
         {
             case 0:
                 EyeToggle.instance.UpdateEye(-1);
-                UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
-                yield return new WaitForSeconds(12);
+                if(!tutorialBAnner)
+                {
+                    UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[0]);
+                    yield return new WaitForSeconds(12);
+                    tutorialBAnner = true;
+                }
                 if (targetObject != null) { Destroy(targetObject); }
                 yield return new WaitForSeconds(1);
                 UIHandler.instance.UpdateCenterScreen(UIHandler.instance.TutorialImages[1]);
@@ -258,13 +262,13 @@ public class GameplayManager : MonoBehaviour
 
 
     // Fix later
-    public void OnSignBannerEnd(bool Correct)
+    public void OnSignBannerEnd(bool Correct,bool buttonclicked)
     {
         
         if (Signbanner) { Destroy(Signbanner.gameObject); }
         if (TutorialSemaphore != -1)
         {
-            if (Correct) { 
+            if (Correct && buttonclicked) { 
                 TutorialSemaphore++;
                 if (TutorialSemaphore == 3) TutorialSemaphore = -1; // Last Event goes to -1
             }

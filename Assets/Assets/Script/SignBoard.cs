@@ -50,7 +50,7 @@ public class SignBoard : MonoBehaviour
         {
             bool isCorrect = (VehicleSpeedHandler.instance.SelectedSpeed == GameplayManager.instance.BuildingSpeed);
             
-            GameplayManager.instance.OnSignBannerEnd(isCorrect);
+            GameplayManager.instance.OnSignBannerEnd(isCorrect,false);
             
            
             

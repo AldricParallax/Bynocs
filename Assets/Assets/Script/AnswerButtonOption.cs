@@ -28,7 +28,7 @@ public class AnswerButtonOption : MonoBehaviour
         }
         
         GameplayManager.instance.BuildingSpeed = GameplayManager.instance.SpeedValues[speedValue];
-        GameplayManager.instance.OnSignBannerEnd(IsCorrect);
+        GameplayManager.instance.OnSignBannerEnd(IsCorrect,true);
         VehicleSpeedHandler.instance.SetButtonEnable(false);
         TimerManager.instance.RecordResponse();
         GameplayManager.instance.RightEyeBlock = !GameplayManager.instance.RightEyeBlock;

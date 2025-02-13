@@ -18,6 +18,7 @@ public class ResultUIHandler : MonoBehaviour
     public TextMeshProUGUI LefteyeAverageResponseTime;
     public TextMeshProUGUI total;
     public TextMeshProUGUI score;
+    public TextMeshProUGUI AverageResponsetime;
     public TextMeshProUGUI totalgameduration;
     private void Start()
     {
@@ -97,10 +98,10 @@ public class ResultUIHandler : MonoBehaviour
         // Fill general stats
         Stats[3].transform.Find("Unanswered_Responses").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
         Stats[3].transform.Find("Unanswered_ResponsesR").GetComponent<TextMeshProUGUI>().text = unansweredResponsesR.ToString();
-        Stats[3].transform.Find("Unanswered_ResponsesL").GetComponent<TextMeshProUGUI>().text = unansweredResponses.ToString();
+        Stats[3].transform.Find("Unanswered_ResponsesL").GetComponent<TextMeshProUGUI>().text = unansweredResponsesL.ToString();
 
     }
-    public void FillAverageTime(int TotalAverage,int AvgR,int AvgL)
+    public void FillAverageTime(float TotalAverage,float AvgR,float AvgL)
     {
         // Fill general stats
         Stats[4].transform.Find("Avg_Response").GetComponent<TextMeshProUGUI>().text = TotalAverage.ToString();
