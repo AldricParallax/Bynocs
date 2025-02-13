@@ -577,12 +577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!20 &118968600 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 9014170783809206330, guid: 895f6f3c2d334633b5800312285058d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 118968596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &118968601 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783705847997, guid: 895f6f3c2d334633b5800312285058d2,
@@ -9844,7 +9838,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 118968600}
+      objectReference: {fileID: 1907417305}
     - target: {fileID: 3330647341372615144, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_ScrollSensitivity
