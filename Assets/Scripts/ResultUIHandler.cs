@@ -16,8 +16,7 @@ public class ResultUIHandler : MonoBehaviour
     [SerializeField] private GameObject LeyeDataTemplate;
     public TextMeshProUGUI RighteyeAverageResponseTime;
     public TextMeshProUGUI LefteyeAverageResponseTime;
-    public TextMeshProUGUI total;
-    public TextMeshProUGUI score;
+    [SerializeField] private TextMeshProUGUI[] ScoreTexts;
     public TextMeshProUGUI AverageResponsetime;
     public TextMeshProUGUI totalgameduration;
     private void Start()
@@ -29,12 +28,7 @@ public class ResultUIHandler : MonoBehaviour
         // Update all "Total" text fields
         
         
-        total.GetComponent<TextMeshProUGUI>().text = total.text;
         
-
-        // Update all "Score" text fields
-        
-        score.GetComponent<TextMeshProUGUI>().text = score.text;
         
     }
     public void NextResultPanel(bool yes)
@@ -73,17 +67,24 @@ public class ResultUIHandler : MonoBehaviour
         // Fill general stats
         totalgameduration.text = gameduration.ToString() + " Mins";
         Stats[0].transform.Find("Signboards_Shown").GetComponent<TextMeshProUGUI>().text = totalShown.ToString();
+        ScoreTexts[0].text = totalShown.ToString();
         Stats[0].transform.Find("Signboards_ShownR").GetComponent<TextMeshProUGUI>().text = totalShownR.ToString();
+        ScoreTexts[1].text = totalShownR.ToString();
         Stats[0].transform.Find("Signboards_ShownL").GetComponent<TextMeshProUGUI>().text = totalShownL.ToString();
-        
+        ScoreTexts[2].text = totalShownL.ToString();
+
+
 
     }
     public void FillCorrectResponses(int correctResponses,int CorrectResponsesR,int CorrectResponsesL)
     {
         // Fill general stats
         Stats[1].transform.Find("Correct_Response").GetComponent<TextMeshProUGUI>().text = correctResponses.ToString();
+        ScoreTexts[3].text = correctResponses.ToString();
         Stats[1].transform.Find("Correct_ResponseR").GetComponent<TextMeshProUGUI>().text = CorrectResponsesR.ToString();
+        ScoreTexts[4].text = CorrectResponsesR.ToString();
         Stats[1].transform.Find("Correct_ResponseL").GetComponent<TextMeshProUGUI>().text = CorrectResponsesL.ToString();
+        ScoreTexts[5].text = CorrectResponsesL.ToString();
     }
     public void FillIncorrectResponses(int incorrectResponses,int incorrectResponsesR,int incorrectResponsesL)
     {

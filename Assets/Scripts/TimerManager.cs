@@ -36,7 +36,6 @@ public class TimerManager : MonoBehaviour
     [SerializeField]public List<ResponseData> responseRecords = new List<ResponseData>();
     private Coroutine timerCoroutine;
     private int currentIndex;
-    [SerializeField]private int[] duration=new int[] {1,5,10};
     [SerializeField]public ResultUIHandler resultUIHandler;
     private void Awake()
     {
@@ -139,15 +138,9 @@ public class TimerManager : MonoBehaviour
             //Debug.Log($"Spawn: {record.spawnTime}, Response: {record.responseTime}, Duration: {record.responseDuration}s, " +$"Correct: {record.isCorrect}, Opened Eye: {record.OpenedEye}");
         }
     }
-    public void CycleTimeValue(bool cycleUp)
+    public void CycleTimeValue(int time)
     {
-        if (!cycleUp)
-            currentIndex = (currentIndex + duration.Length - 1) % duration.Length;
-        else
-            currentIndex = (currentIndex + 1) % duration.Length;
-        
-        float selectedTime = duration[currentIndex];
-        UIHandler.instance.SettingsText[0].text = selectedTime.ToString() + "Mins";
+        float selectedTime = time;
         SetTimerDuration(selectedTime);
     }
     public void CalculateResponseStats()
@@ -225,8 +218,8 @@ public class TimerManager : MonoBehaviour
             }
         }
 
-        resultUIHandler.total.text = totalShown.ToString();
-        resultUIHandler.score.text = correctResponses.ToString();
+        //resultUIHandler.total.text = totalShown.ToString();
+        //resultUIHandler.score.text = correctResponses.ToString();
 
         // Store in variables
         //Debug.Log($"Total: {totalShown}, Correct: {correctResponses}, Incorrect: {incorrectResponses}, Unanswered: {unansweredResponses}");
@@ -241,7 +234,7 @@ public class TimerManager : MonoBehaviour
         // Calculate average response duration for both eyes
         float averageResponseDurationLeft = totalResponseDurationLeft / totalResponsesLeft;
         float averageResponseDurationRight = totalResponseDurationRight / totalResponsesRight;
-        float averageResponseDurationTotal = (averageResponseDurationLeft+averageResponseDurationRight)/2; 
+        float averageResponseDurationTotal = totalResponseDurationLeft + totalResponseDurationRight / (totalResponsesLeft + totalResponsesRight);   
         resultUIHandler.FillAverageTime(averageResponseDurationTotal, averageResponseDurationRight, averageResponseDurationLeft);
         resultUIHandler.RighEyeTimeStamps();
         resultUIHandler.LeftEyeTimeStamps();

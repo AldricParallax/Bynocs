@@ -144,9 +144,8 @@ public class GameplayManager : MonoBehaviour
         }
     
     }
-    public KeyValuePair<int,int> GetRandomNumberFromList(/*bool Display, bool Actualvalue*/)
+    public KeyValuePair<int, int> GetRandomNumberFromList(/*bool Display, bool Actualvalue*/)
     {
-        
         // Get a list of keys from the dictionary
         List<int> keys = new List<int>(SpeedValues.Keys);
 
@@ -155,8 +154,15 @@ public class GameplayManager : MonoBehaviour
 
         // Get the random key
         int randomKey = keys[randomIndex];
+
+        // Check if the same index is not being repeated
+        while (randomKey == selectedpair.Key)
+        {
+            randomIndex = UnityEngine.Random.Range(0, keys.Count);
+            randomKey = keys[randomIndex];
+        }
+
         return new KeyValuePair<int, int>(randomKey, SpeedValues[randomKey]);
-        
     }
 
     public List<int> GetRandomFourElementList(int value)

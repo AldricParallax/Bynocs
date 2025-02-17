@@ -23,7 +23,6 @@ public class UIHandler : MonoBehaviour
     [SerializeField] GameObject Settings_canvas;
     [SerializeField] public Image Settings_Screen;
     [SerializeField] GameObject prefabparent;
-    [SerializeField] public TextMeshProUGUI[] SettingsText;
     public int bannertextFont=36;
     public AudioSource SFX;
     public AudioSource GameplayMusic;
@@ -48,7 +47,7 @@ public class UIHandler : MonoBehaviour
     {
         Centralmat = GetComponent<MeshRenderer>().materials[1];
         //Fill = GameObject.Find("ProgressBar").GetComponent<Image>();
-
+        
 
     }
 
@@ -180,11 +179,17 @@ public class UIHandler : MonoBehaviour
         Settings_canvas.SetActive(false);
         UpdateCenterScreen(IntroImages[2]);
     }
-    public void MotionSicknessAssist()
+    public void MotionSicknessAssist(bool enable)
     {
-        var instance = MotionSicknessBool.instance;
-        instance.motionSicknessEnabled = !instance.motionSicknessEnabled;
-        SettingsText[2].text = instance.motionSicknessEnabled ? "Enabled" : "Disabled";
+        if (enable)
+        {
+            MotionSicknessBool.instance.motionSicknessEnabled = true;
+        }
+        else
+        {
+            MotionSicknessBool.instance.motionSicknessEnabled = false;
+        }
+           
     }
 
     void SetShaderAlpha(float alpha)
@@ -223,16 +228,19 @@ public class UIHandler : MonoBehaviour
         GameplayMusic.Stop();
 
     }
-    private readonly string[] scaleOptions = { "Standard", "Large" };
-private readonly int[] fontSizes = { 36, 50 };
-private int currentScaleIndex = 0;
+    
 
-public void ScaleSetting()
-{
-    currentScaleIndex = (currentScaleIndex + 1) % scaleOptions.Length;
-    SettingsText[1].text = scaleOptions[currentScaleIndex];
-    bannertextFont = fontSizes[currentScaleIndex];
-}
+    public void ScaleSetting(bool large)
+    {
+        if (large)
+        {
+            bannertextFont= 50;
+        }
+        else
+        {
+            bannertextFont = 36;
+        }
+    }
 
     public void playOneshotButton(AudioClip ButtonCLick)
     {
