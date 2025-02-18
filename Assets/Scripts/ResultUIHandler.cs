@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ResultUIHandler : MonoBehaviour
 {
-    [SerializeField] public GameObject[] resultPanel;
+    
     [SerializeField] private GameObject result;
     [SerializeField] GameObject[] Stats;
     [SerializeField] private GameObject RCOntent;
@@ -31,36 +31,7 @@ public class ResultUIHandler : MonoBehaviour
         
         
     }
-    public void NextResultPanel(bool yes)
-    {
-        if (resultPanel.Length == 0) return;
-
-        // Find currently active panel
-        int currentIndex = -1;
-        for (int i = 0; i < resultPanel.Length; i++)
-        {
-            if (resultPanel[i].activeSelf)
-            {
-                currentIndex = i;
-                break;
-            }
-        }
-
-        // Determine next index
-        if (yes)
-            currentIndex = (currentIndex + 1) % resultPanel.Length; // Move forward
-        else
-            currentIndex = (currentIndex - 1 + resultPanel.Length) % resultPanel.Length; // Move backward
-
-        // Disable all panels
-        foreach (var panel in resultPanel)
-        {
-            panel.SetActive(false);
-        }
-
-        // Enable next panel
-        resultPanel[currentIndex].SetActive(true);
-    }
+    
 
     public void FillSignboardsShown(int gameduration,int totalShown,int totalShownR,int totalShownL)
     {
