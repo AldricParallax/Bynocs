@@ -212,7 +212,7 @@ public class UIHandler : MonoBehaviour
         //StopCoroutine(GameplayManager.instance.GameCountdown());
         GameObject targetObject = GameObject.Find("Sign Board Ui");
         if(targetObject != null) { Destroy(targetObject); }
-        if (GameplayManager.instance.tutorialBAnner)
+        if (!GameplayManager.instance.tutorialBAnner)
         {
             targetObject = GameObject.Find("Tutorial");
             if (targetObject != null) { Destroy(targetObject); }
