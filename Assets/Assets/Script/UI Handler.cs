@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
-
+using Unity.XR.PXR;
 
 
 public class UIHandler : MonoBehaviour
@@ -41,6 +41,12 @@ public class UIHandler : MonoBehaviour
             instance = this;
         }
     }
+
+    /*void TriggerVibration(PXR_Input.ControllerType controllerType)
+    {
+        // Trigger vibration with the specified intensity and duration
+        PXR_Input.TriggerHapticVibration(controllerType, vibrationIntensity, vibrationDuration);
+    }*/
 
     // Start is called before the first frame update
     void Start()

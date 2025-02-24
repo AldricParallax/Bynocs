@@ -20,6 +20,7 @@ public class PICOXRHaptics : MonoBehaviour
         {
             AddHapticEvents(button);
         }
+        //TriggerHaptics(20f);
     }
 
     private void AddHapticEvents(Button button)
@@ -41,7 +42,7 @@ public class PICOXRHaptics : MonoBehaviour
         trigger.triggers.Add(clickEntry);
     }
 
-    private void TriggerHaptics(float duration)
+    public void TriggerHaptics(float duration)
     {
         Debug.Log("Triggering haptic feedback");
         StartCoroutine(TriggerHapticFeedback(duration));

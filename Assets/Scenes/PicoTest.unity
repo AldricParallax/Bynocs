@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.23740377, g: 0.27336845, b: 0.27421993, a: 1}
+  m_IndirectSpecularColor: {r: 0.2374768, g: 0.2734401, b: 0.27426985, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3125,6 +3125,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!1 &743649428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 442510345911951804, guid: 856e4dfe521570a459143cf7db8b8969,
+    type: 3}
+  m_PrefabInstance: {fileID: 1826379152681404573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &753935772
 GameObject:
   m_ObjectHideFlags: 0
@@ -5009,6 +5015,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2460c03b994935459855e956ae86018, type: 3}
+--- !u!114 &1224843162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6254466955703373610, guid: 856e4dfe521570a459143cf7db8b8969,
+    type: 3}
+  m_PrefabInstance: {fileID: 1826379152681404573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db5b44aba0b30547b9c7d8028aefa35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1235305684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5845,6 +5863,7 @@ GameObject:
   - component: {fileID: 1425578211}
   - component: {fileID: 1425578214}
   - component: {fileID: 1425578215}
+  - component: {fileID: 1425578216}
   m_Layer: 0
   m_Name: XR Origin (XR Rig) (1)
   m_TagString: Untagged
@@ -5975,6 +5994,66 @@ MonoBehaviour:
   m_AimAssistRequiredSpeed: 0.25
   m_AimAssistPercent: 0.8
   m_AimAssistMaxSpeedPercent: 10
+--- !u!114 &1425578216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425578209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9f82377aeb9704193bd866d119aaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeCamera: []
+  appSpaceWarp: 0
+  m_AppSpaceTransform: {fileID: 0}
+  m_CachedDepthTextureMode: 0
+  screenFade: 0
+  eyeTracking: 0
+  trackingMode: -1
+  sharpeningMode: 0
+  sharpeningEnhance: 0
+  faceTracking: 0
+  lipsyncTracking: 0
+  lateLatching: 0
+  latelatchingDebug: 0
+  bodyTracking: 0
+  foveationLevel: -1
+  adaptiveResolution: 0
+  eyeFoveationLevel: -1
+  foveatedRenderingMode: 0
+  openMRC: 1
+  foregroundLayerMask:
+    m_Bits: 4294967295
+  backgroundLayerMask:
+    m_Bits: 4294967295
+  swapChain:
+  - {fileID: 0}
+  - {fileID: 0}
+  createMRCOverlaySucceed: 0
+  imageIndex: 0
+  imageCounts: 0
+  mrcCamObjActived: 0
+  cameraAttribute: []
+  backgroundCamObj: {fileID: 0}
+  foregroundCamObj: {fileID: 0}
+  mrcBackgroundRT: {fileID: 0}
+  mrcForegroundRT: {fileID: 0}
+  foregroundColor:
+    r: 0
+    g: 1
+    b: 0
+    a: 1
+  adaptiveResolutionPowerSetting: 1
+  minEyeTextureScale: 0.7
+  maxEyeTextureScale: 1.26
+  isNeedResume: 0
+  enableSuperResolution: 0
+  useRecommendedAntiAliasingLevel: 1
+  isURP: 0
+  mrcCube: {fileID: 0}
 --- !u!4 &1427343819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8429981633443581382, guid: 6c8af5c8012f01440af6cb2bc3eb987c,
@@ -7240,6 +7319,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b44324de355c30547823c7134bc367c3, type: 3}
+--- !u!1 &1642218628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8383200843756673564, guid: 856e4dfe521570a459143cf7db8b8969,
+    type: 3}
+  m_PrefabInstance: {fileID: 1826379152681404573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1650683688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9813,6 +9898,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6048f0414e94fce498357d067c1492a2,
         type: 3}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 515230659165456013, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 652091451669406873, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Camera
@@ -9923,6 +10048,51 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -26.6
       objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2666773531726811546, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -9963,11 +10133,121 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1642218628}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037484561955259157, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 192593302}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042601639381461197, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[7].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3121153446707626504, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Padding.m_Bottom
@@ -10163,6 +10443,46 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -26.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365086796756887518, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4377164378073462886, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10210,8 +10530,118 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578903899407751485, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 743649428}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4748232273392353189, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
@@ -10248,6 +10678,51 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 192593302}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893358869014046222, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5057119515845786326, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10289,6 +10764,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6048f0414e94fce498357d067c1492a2,
         type: 3}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308730694065459287, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5377099403339489374, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10314,6 +10829,51 @@ PrefabInstance:
       propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5449224888170736206, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[6].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Transition
@@ -10330,6 +10890,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6048f0414e94fce498357d067c1492a2,
         type: 3}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466757512213692273, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5585894696810252235, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -10430,10 +11030,60 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6254466955703373610, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: hoverDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254466955703373610, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: inputDuration
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6358476706584053056, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423423487975565145, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6476448679744929119, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
@@ -10459,6 +11109,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534289939311356043, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6590069378680438350, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
@@ -10566,16 +11281,136 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7296818195079824759, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 192593300}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402915785155660641, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7462429053942499662, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1907417305}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498091399886812522, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7542845680747672546, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10598,6 +11433,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 192593300}
@@ -10606,6 +11451,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 192593300}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575926507395292430, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7585670721494072328, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Sprite
@@ -10632,6 +11512,71 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1642218628}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149623043233431049, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8173713269511337232, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
@@ -10733,6 +11678,51 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -306.6
       objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8765502290720913021, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8808829807348267053, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10824,11 +11814,96 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6048f0414e94fce498357d067c1492a2,
         type: 3}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038920994386163030, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 192593300}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1224843162}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: TriggerHaptics
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_FloatArgument
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070513187817609897, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9154013069545605772, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_Sprite
