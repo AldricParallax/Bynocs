@@ -6006,54 +6006,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9f82377aeb9704193bd866d119aaa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeCamera: []
-  appSpaceWarp: 0
-  m_AppSpaceTransform: {fileID: 0}
-  m_CachedDepthTextureMode: 0
-  screenFade: 0
-  eyeTracking: 0
-  trackingMode: -1
-  sharpeningMode: 0
-  sharpeningEnhance: 0
-  faceTracking: 0
-  lipsyncTracking: 0
-  lateLatching: 0
-  latelatchingDebug: 0
-  bodyTracking: 0
-  foveationLevel: -1
-  adaptiveResolution: 0
-  eyeFoveationLevel: -1
-  foveatedRenderingMode: 0
-  openMRC: 1
-  foregroundLayerMask:
-    m_Bits: 4294967295
-  backgroundLayerMask:
-    m_Bits: 4294967295
-  swapChain:
-  - {fileID: 0}
-  - {fileID: 0}
-  createMRCOverlaySucceed: 0
-  imageIndex: 0
-  imageCounts: 0
-  mrcCamObjActived: 0
-  cameraAttribute: []
-  backgroundCamObj: {fileID: 0}
-  foregroundCamObj: {fileID: 0}
-  mrcBackgroundRT: {fileID: 0}
-  mrcForegroundRT: {fileID: 0}
-  foregroundColor:
-    r: 0
-    g: 1
-    b: 0
-    a: 1
-  adaptiveResolutionPowerSetting: 1
-  minEyeTextureScale: 0.7
-  maxEyeTextureScale: 1.26
-  isNeedResume: 0
-  enableSuperResolution: 0
-  useRecommendedAntiAliasingLevel: 1
-  isURP: 0
-  mrcCube: {fileID: 0}
 --- !u!4 &1427343819 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8429981633443581382, guid: 6c8af5c8012f01440af6cb2bc3eb987c,
@@ -10051,12 +10003,17 @@ PrefabInstance:
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
@@ -10070,12 +10027,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: TriggerHaptics
       objectReference: {fileID: 0}
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PICOXRHaptics, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: PICOXRHaptics, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2602319792654855352, guid: 856e4dfe521570a459143cf7db8b8969,
@@ -10617,7 +10584,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1826379152681404574}
+      objectReference: {fileID: 1826379152681404575}
     - target: {fileID: 4716769101520956951, guid: 856e4dfe521570a459143cf7db8b8969,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -12041,12 +12008,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1613115977}
   m_SourcePrefab: {fileID: 100100000, guid: 856e4dfe521570a459143cf7db8b8969, type: 3}
---- !u!1 &1826379152681404574 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2153935605252655232, guid: 856e4dfe521570a459143cf7db8b8969,
-    type: 3}
-  m_PrefabInstance: {fileID: 1826379152681404573}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826379152681404575 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 155098698499665230, guid: 856e4dfe521570a459143cf7db8b8969,
