@@ -27,22 +27,26 @@ public class EyeToggle : MonoBehaviour
     {
         if(mat == null)
             mat = GetComponent<MeshRenderer>().material;
-
-        switch (bLeftEyeEnable)
+        if (!Application.isEditor)
         {
-            case 1:
-                mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 1));
-                mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 0));
-                break;
-            case 0:
-                mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 0));
-                mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 1));
-                break;
-            default:
-                mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 0));
-                mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 0));
-                break;
+            switch (bLeftEyeEnable)
+            {
+                case 1:
+                    mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 1));
+                    mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 0));
+                    break;
+                case 0:
+                    mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 0));
+                    mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 1));
+                    break;
+                default:
+                    mat.SetColor("_LeftEyeColor", new Color(0, 0, 0, 0));
+                    mat.SetColor("_RightEyeColor", new Color(0, 0, 0, 0));
+                    break;
+            }
         }
+            
+        
     }
     // New method to fade in/out eyes
     public void StartEyeFade(int bLeftEyeEnable, float targetAlpha, float duration)

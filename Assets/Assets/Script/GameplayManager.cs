@@ -238,7 +238,7 @@ public class GameplayManager : MonoBehaviour
     void ActualGameLoop()
     {
         Debug.Log("Time remaining: " + TimerManager.instance.gettimeremaining() + " Time Between Spawn and finsh: " + returntimebetweenspawnandfinish(StartLoc, endpoint));
-        if (TimerManager.instance.gettimeremaining() > returntimebetweenspawnandfinish(StartLoc, endpoint))
+        if (TimerManager.instance.gettimeremaining() > 5f)
         {
             VehicleSpeedHandler.instance.Canvas.SetActive(true);
             TimerManager.instance.Answered = false;

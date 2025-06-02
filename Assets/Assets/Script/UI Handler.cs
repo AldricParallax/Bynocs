@@ -234,6 +234,11 @@ public class UIHandler : MonoBehaviour
         GameplayMusic.Stop();
 
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
     
 
     public void ScaleSetting(bool large)
