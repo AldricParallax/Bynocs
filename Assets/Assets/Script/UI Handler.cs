@@ -237,9 +237,39 @@ public class UIHandler : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit();
+
+
+
+        string targetPackageName = "com.Bynocs.BynocsManager";
+        #if UNITY_ANDROID && !UNITY_EDITOR
+                        try
+                        {
+                            AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                            AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+
+                            AndroidJavaObject packageManager = currentActivity.Call<AndroidJavaObject>("getPackageManager");
+                            AndroidJavaObject launchIntent = packageManager.Call<AndroidJavaObject>("getLaunchIntentForPackage", targetPackageName);
+
+                            if (launchIntent != null)
+                            {
+                                currentActivity.Call("startActivity", launchIntent);
+                                Debug.Log("App launched: " + targetPackageName);
+                            }
+                            else
+                            {
+                                Debug.LogWarning("Launch intent not found for: " + targetPackageName);
+                            }
+                        }
+                        catch (System.Exception e)
+                        {
+                            Debug.LogError("Failed to launch app: " + e.Message);
+                        }
+        #else
+                Debug.Log("Launching apps only works on Android device.");
+        #endif
+
     }
-    
+
 
     public void ScaleSetting(bool large)
     {
