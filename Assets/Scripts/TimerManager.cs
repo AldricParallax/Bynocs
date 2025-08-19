@@ -138,9 +138,10 @@ public class TimerManager : MonoBehaviour
             //Debug.Log($"Spawn: {record.spawnTime}, Response: {record.responseTime}, Duration: {record.responseDuration}s, " +$"Correct: {record.isCorrect}, Opened Eye: {record.OpenedEye}");
         }
     }
+    public int selectedTime = 1;
     public void CycleTimeValue(int time)
     {
-        float selectedTime = time;
+        selectedTime = time;
         SetTimerDuration(selectedTime);
     }
     public void CalculateResponseStats()
@@ -243,8 +244,9 @@ public class TimerManager : MonoBehaviour
         resultUIHandler.LefteyeAverageResponseTime.text=Math.Round(averageResponseDurationLeft,2).ToString()+" Sec";
         //resultUIHandler.AverageResponsetime.text=Math.Round(averageResponseDurationTotal,2).ToString()+" Sec";
         resultUIHandler.AverageResponsetime.text=Math.Round(averageResponseDurationTotal,2).ToString()+" Sec";
-        
+
         //Debug.Log($"Average Response Duration - Left Eye: {averageResponseDurationLeft}s, Right Eye: {averageResponseDurationRight}s");
+        GameDataSender.instance.SendData();
     }
 
 }

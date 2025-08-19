@@ -237,11 +237,10 @@ public class UIHandler : MonoBehaviour
 
     public void ExitGame()
     {
-
-
+       
 
         string targetPackageName = "com.Bynocs.BynocsManager";
-        #if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID && !UNITY_EDITOR
                         try
                         {
                             AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
@@ -264,15 +263,17 @@ public class UIHandler : MonoBehaviour
                         {
                             Debug.LogError("Failed to launch app: " + e.Message);
                         }
-        #else
-                Debug.Log("Launching apps only works on Android device.");
-        #endif
+#else
+        Debug.Log("Launching apps only works on Android device.");
+#endif
+
 
     }
 
-
+    public bool ScaleLarge = false;
     public void ScaleSetting(bool large)
     {
+        ScaleLarge = large;
         if (large)
         {
             bannertextFont= 50;

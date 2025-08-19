@@ -231,6 +231,7 @@ public class GameplayManager : MonoBehaviour
         UIHandler.instance.GameplayMusic.Play();
         TimerManager.instance.StartTimer();
         //Debug.Log("Game timer Started");
+        GameDataSender.instance.CaptureStartTime();
         ActualGameLoop();
     }
 
@@ -258,6 +259,8 @@ public class GameplayManager : MonoBehaviour
         else
         {
             Result.SetActive(true);
+            GameDataSender.instance.CaptureEndTime();
+
             EyeToggle.instance.UpdateEye(-1);
             VehicleSpeedHandler.instance.Canvas.SetActive(false);
             TimerManager.instance.CalculateResponseStats();
