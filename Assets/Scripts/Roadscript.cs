@@ -14,7 +14,7 @@ public class Roadscript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveSpeed = GameplayManager.instance.BuildingSpeed * GameplayManager.instance.Multiplier;
+        moveSpeed = GameplayManager.instance.BuildingSpeed * GameplayManager.instance.Multiplier * 0f;
         // Move the road constantly in the forward direction
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
         //check position of road and destroy

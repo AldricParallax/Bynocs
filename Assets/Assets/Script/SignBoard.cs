@@ -68,12 +68,12 @@ public class SignBoard : MonoBehaviour
 
     private void MoveUp()
     {
-        transform.Translate(Vector3.right * moveSpeed * Time.fixedDeltaTime);
+        //transform.Translate(Vector3.right * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void MoveDown()
     {
-        transform.Translate(Vector3.down * moveSpeed * Time.fixedDeltaTime);
+        //transform.Translate(Vector3.down * moveSpeed * Time.fixedDeltaTime);
     }
 
     public void SwitchMovement()

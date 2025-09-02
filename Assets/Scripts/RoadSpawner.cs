@@ -17,9 +17,10 @@ public class RoadSpawner : MonoBehaviour
     public float Roadspeed=40; // Speed at which the road moves
     private void Start()
     {
-        
-        Road.GetComponent<Roadscript>().moveSpeed =Roadspeed;
+
+        Road.GetComponent<Roadscript>().moveSpeed = Roadspeed;
         Road1.GetComponent<Roadscript>().moveSpeed = Roadspeed;
+
         // Spawn the initial road and set it as the tracking object
         //SpawnInitialRoad();
     }

@@ -18,11 +18,11 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] Transform endpoint;
 
     public Dictionary<int, int> SpeedValues = new Dictionary<int, int>{
-        { 25, 10 },
-        { 40, 15 },
-        { 45 ,20 },
-        { 60, 25 },
-        { 75, 30 },
+        { 60, 10 },
+        { 68, 15 },
+        { 80 ,20 },
+        { 86, 25 },
+        { 88, 30 },
     };
     public bool RightEyeBlock = false;
     int LoopCount = 0;
